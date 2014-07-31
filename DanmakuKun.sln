@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastColoredTextBox", "FastColoredTextBox\FastColoredTextBox.csproj", "{6DD14A85-CCFC-4774-BD26-0F5772512319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1C657E3B-56CC-43C4-96B0-B4E47FF8686A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanmakuKun", "DanmakuKun\DanmakuKun.csproj", "{ECF3B76A-EAEE-417E-AE98-C5258269BF54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD14A85-CCFC-4774-BD26-0F5772512319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C657E3B-56CC-43C4-96B0-B4E47FF8686A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C657E3B-56CC-43C4-96B0-B4E47FF8686A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C657E3B-56CC-43C4-96B0-B4E47FF8686A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C657E3B-56CC-43C4-96B0-B4E47FF8686A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF3B76A-EAEE-417E-AE98-C5258269BF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF3B76A-EAEE-417E-AE98-C5258269BF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF3B76A-EAEE-417E-AE98-C5258269BF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF3B76A-EAEE-417E-AE98-C5258269BF54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

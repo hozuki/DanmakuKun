@@ -1,0 +1,8 @@
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\bin\Release\FastColoredTextBox.dll
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\bin\Release\FastColoredTextBox.pdb
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FastColoredTextBox.resources
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FindForm.resources
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.ReplaceForm.resources
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.GenerateResource.Cache
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBox.dll
+D:\Source Code Of Programs\VS .NET\FastColoredTextBox\FastColoredTextBox\obj\Release\FastColoredTextBox.pdb

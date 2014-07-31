@@ -1,0 +1,17 @@
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\DanmakuKun.exe
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\DanmakuKun.pdb
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\ICSharpCode.AvalonEdit.dll
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\ICSharpCode.AvalonEdit.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.csprojResolveAssemblyReference.cache
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\MainWindow.baml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\Samples\AvalonEdit\Window1.baml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\MainWindow.g.cs
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\Samples\AvalonEdit\Window1.g.cs
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\App.g.cs
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun_Content.g.cs
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun_MarkupCompile.cache
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.g.resources
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.Properties.Resources.resources
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.csproj.GenerateResource.Cache
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.exe
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.pdb

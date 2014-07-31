@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lists>
+	<list name="Display" static="true">
+		<item name="createBlurFilter" type="function" return="BlurFilter" description="创建模糊滤镜
+和一个空行" />
+		<item name="createButton" type="function" return="CommentButton" description="创建 Button 对象" />
+		<item name="createCanvas" type="function" return="CommentCanvas" description="创建 Canvas 对象" />
+		<item name="createColorTransform" type="function" return="ColorTransform" description="创建颜色变换" />
+		<item name="createComment" type="function" return="CommentField" description="创建字幕" />
+		<item name="createGlowFilter" type="function" return="GlowFilter" description="创建发光滤镜" />
+		<item name="createMatrix" type="function" return="Matrix" description="创建 Matrix 对象" />
+		<item name="createMatrix3D" type="function" return="Matrix3D" description="创建 Matrix3D 对象" />
+		<item name="createPoint" type="function" return="Point" description="创建 Point 对象" />
+		<item name="createShape" type="function" return="Shape" description="创建 Shape 对象" />
+		<item name="createTextFormat" type="function" return="TextFormat" description="创建文本格式" />
+		<item name="fullScreenWidth" type="property" return="uint" description="全屏显示器宽度(只读)" modifiers="ReadOnly" />
+		<item name="fullScreenHeight" type="property" return="uint" description="全屏显示器高度(只读)" modifiers="ReadOnly" />
+		<item name="height" type="property" return="Number" description="对象高度(只读)" modifiers="ReadOnly" />
+		<item name="width" type="property" return="Number" description="对象宽度(只读)" modifiers="ReadOnly" />
+		<item name="toIntVector" type="function" return="Vector.&lt;int&gt;" description="将数组转换为 Vector.&lt;int&gt;" />
+		<item name="toUIntVector" type="function" return="Vector.&lt;uint&gt;" description="将数组转换为 Vector.&lt;uint&gt;" />
+		<item name="toNumberVector" type="function" return="Vector.&lt;Number&gt;" description="将数组转换为 Vector.&lt;Number&gt;" />
+	</list>
+</lists>
