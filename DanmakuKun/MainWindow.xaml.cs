@@ -131,11 +131,11 @@ namespace DanmakuKun
                                 IList<ICompletionData> data = completionWindow.CompletionList.CompletionData;
                                 if (callerObjectFullName == "$")
                                 {
-                                    Util.OneListToAnother(BiliLists.Completion["Display"], data);
+                                    Utils.OneListToAnother(BiliLists.Completion["Display"], data);
                                 }
                                 else if (callerObjectFullName == "$G")
                                 {
-                                    Util.OneListToAnother(BiliLists.Completion["Global"], data);
+                                    Utils.OneListToAnother(BiliLists.Completion["Global"], data);
                                 }
                                 else if (!callerObjectFullName.StartsWith("$") && BiliLists.Completion.Keys.Contains(callerObjectFullName))
                                 {
@@ -149,7 +149,7 @@ namespace DanmakuKun
                                     //case "String":
                                     //case "Bitmap":  // External libraries required
                                     //case "Storage": // External libraries required
-                                    Util.OneListToAnother(BiliLists.Completion[callerObjectFullName], data);
+                                    Utils.OneListToAnother(BiliLists.Completion[callerObjectFullName], data);
                                 }
                                 else
                                 {
@@ -190,14 +190,14 @@ namespace DanmakuKun
                                     }
                                     if (isGraphicsObject)
                                     {
-                                        Util.OneListToAnother(BiliLists.Completion["$Graphics"], data);
+                                        Utils.OneListToAnother(BiliLists.Completion["$Graphics"], data);
                                     }
                                     else
                                     {
                                         //Util.OneListToAnother(BiliCompletionLists.Lists["CommentField"], data);
                                         //Util.OneListToAnother(BiliCompletionLists.Lists["Shape"], data);
                                         // 使用排序合并很耗时间，所以如果能确定列表项目类型，就不需要使用
-                                        Util.CombineListsToOne(data, true,
+                                        Utils.CombineListsToOne(data, true,
                                             BiliLists.Completion["$CommentField"],
                                             BiliLists.Completion["$Shape"],
                                             BiliLists.Completion["$Object"],
@@ -225,7 +225,7 @@ namespace DanmakuKun
                         // 注意形如 "([a-zA-Z_][\w]*)[\s]*)" 这个捕获是专门为了提取而设置的，请在之后的代码中遍历所有捕获结果
                         // 暂时未捕获类似 $.createBlurFilter() 这样的形式 - 2014.08.01
                         //Regex regex = new Regex(@"(?:^|[^\.])[^\.]*\b(?:(\$|[a-zA-Z_][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*)*$", RegexOptions.None);
-                        Regex regex = new Regex(@"\b(?:(\$|[a-zA-Z_][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*)*$", RegexOptions.None);
+                        Regex regex = new Regex(@"(?:^|\b|[^\w\$]?)(?:(?:\$[G]?|[a-zA-Z_][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*)*$", RegexOptions.None);
                         //Regex regex = new Regex(@"(?:^|[^\.])\b([a-zA-Z_][\w]*[\s]*)(\.[\s]*[a-zA-Z_][\w]*[\s]*)(\.[\s]*[a-zA-Z_][\w]*[\s]*)?$", RegexOptions.None);
                         var match = regex.Match(s);
                         if (match.Success)
@@ -252,6 +252,11 @@ namespace DanmakuKun
                             //    functionName = match.Groups[2].Captures[match.Groups[2].Captures.Count - 1].Value;
                             //}
                             var functionName = match.Value;
+                            functionName = functionName.TrimStart();
+                            if (functionName.Length > 0 && !char.IsLetterOrDigit(functionName[0]) && functionName[0] != '_' && functionName[0] != '$')
+                            {
+                                functionName = functionName.Substring(1, functionName.Length - 1);
+                            }
 
                             if (!string.IsNullOrEmpty(functionName))
                             {

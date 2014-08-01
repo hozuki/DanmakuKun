@@ -81,7 +81,7 @@
     <Compile Include="Samples\AvalonEdit\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Util.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="WithSourceFunctionCompletionData.cs" />
     <Compile Include="WithSourcePropertyCompletionData.cs" />
     <Page Include="MainWindow.xaml">
