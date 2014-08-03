@@ -85,7 +85,7 @@ namespace DanmakuKun
                 if (_list.Count > 1)
                 {
                     string s = _list[0].Description as string;
-                    s += "\n(+" + (_list.Count - 1).ToString() + " 重载)\n";
+                    s += "\n(+" + (_list.Count - 1).ToString() + " 实例)\n";
                     s += "来源: ";
                     for (var i = 0; i < _list.Count; i++)
                     {

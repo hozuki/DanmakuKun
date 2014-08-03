@@ -51,7 +51,7 @@ namespace DanmakuKun
             }
         }
 
-        private InsightWindow GetNullItemInsightWindow(TextArea textArea)
+        private static InsightWindow GetNullItemInsightWindow(TextArea textArea)
         {
             InsightWindow insightWindow = new InsightWindow(textArea);
             insightWindow.Closed += (s, e) =>
@@ -90,12 +90,12 @@ namespace DanmakuKun
                 }
                 else
                 {
-                    return GetNullItemInsightWindow(textArea);
+                    return null;
                 }
             }
             else if (_list.Count == 0)
             {
-                return GetNullItemInsightWindow(textArea);
+                return null;
             }
             else
             {
@@ -122,7 +122,7 @@ namespace DanmakuKun
                 }
                 else
                 {
-                    return GetNullItemInsightWindow(textArea);
+                    return null;
                 }
             }
         }

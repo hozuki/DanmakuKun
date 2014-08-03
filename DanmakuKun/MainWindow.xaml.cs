@@ -284,27 +284,6 @@ namespace DanmakuKun
                         var match = RegexHelper.FunctionCallIdentifierRegexRTL.Match(s);
                         if (match.Success)
                         {
-                            //    System.Diagnostics.Debug.Print("Capture count: " + match.Captures.Count.ToString());
-                            //    System.Diagnostics.Debug.Print("Group count: " + match.Groups.Count.ToString());
-
-                            //int i = 0;
-                            //int j = 0;
-                            //foreach (Group item in match.Groups)
-                            //{
-                            //    j = 0;
-                            //    foreach (Capture cap in item.Captures)
-                            //    {
-                            //        System.Diagnostics.Debug.Print("G" + i.ToString() + "C" + j.ToString() + " " + cap.Value);
-                            //        j++;
-                            //    }
-                            //    i++;
-                            //}
-
-                            //string functionName = null;
-                            //if (match.Groups.Count > 2 && match.Groups[2].Captures.Count > 0)
-                            //{
-                            //    functionName = match.Groups[2].Captures[match.Groups[2].Captures.Count - 1].Value;
-                            //}
                             var functionName = match.Value;
                             functionName = functionName.TrimStart();
                             if (functionName.Length > 0 && !char.IsLetterOrDigit(functionName[0]) && functionName[0] != '_' && functionName[0] != '$')
@@ -343,7 +322,8 @@ namespace DanmakuKun
                                         shortFunctionName = functionName.Substring(lastDot + 1, functionName.Length - lastDot - 1);
                                     }
                                     BiliLists.LocalInsight.TryGetValue(shortFunctionName, out funcs);
-                                    functionFilter = ~FunctionModifiers.Static; // 既然全局静态函数库找不到，那么就不能是静态函数，肯定是成员函数
+                                    // 用户自定义的静态全局函数，和成员函数，怎么区分？无法区分。所以不用管这个 filter 了。
+                                    //functionFilter = ~FunctionModifiers.Static; // 既然全局静态函数库找不到，那么就不能是静态函数，肯定是成员函数
                                 }
                                 if (funcs != null)
                                 {
@@ -352,7 +332,10 @@ namespace DanmakuKun
                                         insightWindow.Close();
                                     }
                                     insightWindow = funcs.GetInsightWindow(editor.TextArea, functionFilter);
-                                    insightWindow.Show();
+                                    if (insightWindow != null)
+                                    {
+                                        insightWindow.Show();
+                                    }
                                 }
                             }
                         }
