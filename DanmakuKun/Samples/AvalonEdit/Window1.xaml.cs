@@ -185,20 +185,20 @@ namespace DanmakuKun.AvalonEdit.Sample
 
         #region Folding
         FoldingManager foldingManager;
-        AbstractFoldingStrategy foldingStrategy;
+        //AbstractFoldingStrategy foldingStrategy;
 
         void HighlightingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (textEditor.SyntaxHighlighting == null)
             {
-                foldingStrategy = null;
+                //foldingStrategy = null;
             }
             else
             {
                 switch (textEditor.SyntaxHighlighting.Name)
                 {
                     case "XML":
-                        foldingStrategy = new XmlFoldingStrategy();
+                        //foldingStrategy = new XmlFoldingStrategy();
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.DefaultIndentationStrategy();
                         break;
                     case "C#":
@@ -206,36 +206,36 @@ namespace DanmakuKun.AvalonEdit.Sample
                     case "PHP":
                     case "Java":
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy(textEditor.Options);
-                        foldingStrategy = new BraceFoldingStrategy();
+                        //foldingStrategy = new BraceFoldingStrategy();
                         break;
                     default:
                         textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.DefaultIndentationStrategy();
-                        foldingStrategy = null;
+                        //foldingStrategy = null;
                         break;
                 }
             }
-            if (foldingStrategy != null)
-            {
-                if (foldingManager == null)
-                    foldingManager = FoldingManager.Install(textEditor.TextArea);
-                foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
-            }
-            else
-            {
-                if (foldingManager != null)
-                {
-                    FoldingManager.Uninstall(foldingManager);
-                    foldingManager = null;
-                }
-            }
+            //if (foldingStrategy != null)
+            //{
+            //    if (foldingManager == null)
+            //        foldingManager = FoldingManager.Install(textEditor.TextArea);
+            //    foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+            //}
+            //else
+            //{
+            //    if (foldingManager != null)
+            //    {
+            //        FoldingManager.Uninstall(foldingManager);
+            //        foldingManager = null;
+            //    }
+            //}
         }
 
         void foldingUpdateTimer_Tick(object sender, EventArgs e)
         {
-            if (foldingStrategy != null)
-            {
-                foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
-            }
+            //if (foldingStrategy != null)
+            //{
+            //    foldingStrategy.UpdateFoldings(foldingManager, textEditor.Document);
+            //}
         }
         #endregion
     }

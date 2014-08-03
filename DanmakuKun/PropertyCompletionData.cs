@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Text;
 
 namespace DanmakuKun
@@ -79,6 +81,17 @@ namespace DanmakuKun
                     default:
                         return CompletionItemImages.PropertyItemIcon;
                 }
+            }
+        }
+
+        public override object Content
+        {
+            get
+            {
+                TextBlock txt = new TextBlock();
+                txt.Inlines.Add(_text + " : ");
+                txt.Inlines.Add(new Bold(new Run(_typeName)));
+                return txt;
             }
         }
 

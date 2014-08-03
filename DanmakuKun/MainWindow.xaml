@@ -5,18 +5,30 @@
 	xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
 	TextOptions.TextFormattingMode="Display"
 	Title="Danmaku-kun" Height="300" Width="500"
+    Icon="Resources\Images\danmaku-kun.ico"
     WindowStartupLocation="CenterScreen"
     x:Name="DkMainWindow"
 	>
+    <Window.Resources>
+        <ContextMenu x:Name="popupMenu" x:Key="popupMenu">
+            <MenuItem Header="剪切(_T)" Command="ApplicationCommands.Cut"/>
+            <MenuItem Header="复制(_C)" Command="ApplicationCommands.Copy"/>
+            <MenuItem Header="粘贴(_P)" Command="ApplicationCommands.Paste"/>
+            <MenuItem Header="删除(_D)" Command="ApplicationCommands.Delete"/>
+            <Separator/>
+            <MenuItem Header="撤销(_U)" Command="ApplicationCommands.Undo"/>
+            <MenuItem Header="重做(_R)" Command="ApplicationCommands.Redo"/>
+        </ContextMenu>
+    </Window.Resources>
     <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="文件(_F)">
+        <Menu x:Name="mainMenu" DockPanel.Dock="Top">
+            <MenuItem x:Name="mnuFile" Header="文件(_F)">
                 <MenuItem Header="打开(_O)"/>
                 <MenuItem Header="保存(_S)"/>
                 <Separator/>
                 <MenuItem Header="退出(_X)"/>
             </MenuItem>
-            <MenuItem Header="编辑(_E)">
+            <MenuItem x:Name="mnuEdit" Header="编辑(_E)">
                 <MenuItem Header="剪切(_T)" Command="Cut"/>
                 <MenuItem Header="复制(_C)" Command="Copy"/>
                 <MenuItem Header="粘贴(_P)" Command="Paste"/>
@@ -37,7 +49,7 @@
         <Grid>
             <avalonEdit:TextEditor
 				Name="editor"
-				FontFamily="Consolas"
+				FontFamily="Courier New"
 				FontSize="10pt"
 				SyntaxHighlighting="C#" Grid.ColumnSpan="2"
 			>

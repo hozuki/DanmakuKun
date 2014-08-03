@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<lists>
+<completion-lists version="1.0">
 	<list name="Display" static="true">
 		<item name="createBlurFilter" type="function" return="BlurFilter" description="创建模糊滤镜" />
 		<item name="createButton" type="function" return="CommentButton" description="创建 Button 对象" />
@@ -30,7 +30,7 @@
 		<item name="rgb" type="function" return="int" description="映射色彩值" />
 	</list>
 	<list name="Player" static="true">
-		<item name="commentList" type="function" return="Array.&lt;CommentData&gt;" description="获取当前弹幕列表" />
+		<item name="commentList" type="property" return="Array.&lt;CommentData&gt;" description="获取当前弹幕列表" />
 		<item name="commentTrigger" type="function" return="uint" description="监听发送弹幕" />
 		<item name="createSound" type="function" return="ScriptSound" description="建立声音元件" />
 		<item name="height" type="property" return="int" description="播放器高度(只读)" modifiers="ReadOnly" />
@@ -47,29 +47,9 @@
 		<item name="videoWidth" type="property" return="int" description="视频宽度(只读)" modifiers="ReadOnly" />
 		<item name="width" type="property" return="int" description="播放器宽度(只读)" modifiers="ReadOnly" />
 	</list>
-	<list name="Math" static="true">
-		<item name="abs" type="function" return="Number" description="获取绝对值" />
-		<item name="acos" type="function" return="Number" description="反余弦" />
-		<item name="asin" type="function" return="Number" description="反正弦" />
-		<item name="atan" type="function" return="Number" description="反正切" />
-		<item name="atan2" type="function" return="Number" description="反正切" />
-		<item name="ceil" type="function" return="Number" description="返回上限整数" />
-		<item name="cos" type="function" return="Number" description="余弦" />
-		<item name="exp" type="function" return="Number" description="以e为底的指数" />
-		<item name="floor" type="function" return="Number" description="返回下限整数" />
-		<item name="log" type="function" return="Number" description="自然对数" />
-		<item name="max" type="function" return="Number" description="返回最大值" />
-		<item name="min" type="function" return="Number" description="返回最大值" />
-		<item name="pow" type="function" return="Number" description="计算幂函数" />
-		<item name="random" type="function" return="Number" description="返回伪随机数" />
-		<item name="round" type="function" return="Number" description="四舍五入取整" />
-		<item name="sin" type="function" return="Number" description="正弦" />
-		<item name="sqrt" type="function" return="Number" description="计算平方根" />
-		<item name="tan" type="function" return="Number" description="正切" />
-	</list>
 	<list name="Global" static="true">
+    <item name="_" type="function" return="*" description="读取值" />
 		<item name="_get" type="function" return="*" description="读取值" />
-		<item name="_" type="function" return="*" description="读取值" />
 		<item name="_set" type="function" return="void" description="保存值" />
 	</list>
 	<list name="ScriptManager" static="true">
@@ -103,19 +83,37 @@
 		<item name="uploadScore" type="function" return="void" description="上传分数" />
 	</list>
 	<list name="CommentField" static="false">
+    <item name="alwaysShowSelection" type="property" return="Boolean" source="CommentField" />
+    <item name="appendText" type="function" return="void" source="CommentField" />
+    <item name="background" type="property" return="Boolean" source="CommentField" />
+    <item name="backgroundColor" type="property" return="uint" source="CommentField" />
+    <item name="bold" type="property" return="Boolean" source="CommentField" />
+    <item name="border" type="property" return="Boolean" source="CommentField" />
+    <item name="borderColor" type="property" return="uint" source="CommentField" />
+    <item name="bottomScrollV" type="property" return="int" source="CommentField" modifiers="ReadOnly" />
+    <item name="condenseWhite" type="property" return="Boolean" source="CommentField" />
+    <item name="defaultTextFormat" type="property" return="TextFormat" source="CommentField" />
+    <item name="fontSize" type="property" return="Number" source="CommentField" />
+    <item name="gridFitType" type="property" return="String" source="CommentField" />
+    <item name="length" type="property" return="int" source="CommentField" modifiers="ReadOnly" />
+    <item name="htmlText" type="property" return="String" source="CommentField" />
+    <item name="multiline" type="property" return="Boolean" source="CommentField" />
+    <item name="numLines" type="property" return="int" source="CommentField" modifiers="ReadOnly" />
+    <item name="restrict" type="property" return="String" source="CommentField" />
+    <item name="sharpness" type="property" return="Number" source="CommentField" />
+    <item name="text" type="property" return="String" source="CommentField" />
+    <item name="textColor" type="property" return="uint" source="CommentField" />
+    <item name="textHeight" type="property" return="Number" source="CommentField" />
+    <item name="textWidth" type="property" return="Number" source="CommentField" />
+    <item name="thickness" type="property" return="Number" source="CommentField" />
+    <item name="wordWrap" type="property" return="Boolean" source="CommentField" />
 	</list>
-	<list name="CommentData" static="false">
-	</list>
-	<list name="Graphics" static="false">
-	</list>
-	<list name="ITween" static="false">
-	</list>
-	<list name="Shape" static="false">
-	</list>
-	<list name="Object" static="false">
-	</list>
-	<list name="Timer" static="false">
-	</list>
-	<list name="String" static="false">
-	</list>
-</lists>
+  <list name="CommentData" static="false">
+    <item name="color" type="property" return="uint" source="CommentData" />
+    <item name="fontSize" type="property" return="uint" source="CommentData" />
+    <item name="mode" type="property" return="int" source="CommentData" />
+    <item name="pool" type="property" return="int" source="CommentData" />
+    <item name="time" type="property" return="Number" source="CommentData" />
+    <item name="txt" type="property" return="String" source="CommentData" />
+  </list>
+</completion-lists>

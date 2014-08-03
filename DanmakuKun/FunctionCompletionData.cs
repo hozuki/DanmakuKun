@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Documents;
+using System.Windows.Controls;
 
 namespace DanmakuKun
 {
@@ -49,6 +51,17 @@ namespace DanmakuKun
             get
             {
                 return CompletionItemImages.FunctionItemIcon;
+            }
+        }
+
+        public override object Content
+        {
+            get
+            {
+                TextBlock txt = new TextBlock();
+                txt.Inlines.Add(_text + " : ");
+                txt.Inlines.Add(new Bold(new Run(_returnTypeName)));
+                return txt;
             }
         }
 

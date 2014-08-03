@@ -27,7 +27,7 @@ namespace DanmakuKun
         {
             string currentPath;
             currentPath = Environment.CurrentDirectory;
-            currentPath = Path.Combine(currentPath, @"images");
+            currentPath = Path.Combine(currentPath, @"resources/images");
             Uri uri;
             uri = new Uri(Path.Combine(currentPath, "classitemicon.png"));
             ClassItemIcon = new BitmapImage(uri);

@@ -140,8 +140,9 @@ namespace DanmakuKun
             return r;
         }
 
-        public static void OneListToAnother<TSource, TDest>(IList<TSource> source, IList<TDest> destination) where TSource : TDest
+        public static void OneListToAnother(CompletionList source, IList<ICSharpCode.AvalonEdit.CodeCompletion.ICompletionData> destination)
         {
+            // 该复制操作不支持识别重载
             if (source == null)
             {
                 throw new ArgumentNullException("source");
@@ -157,11 +158,13 @@ namespace DanmakuKun
         }
 
 
-        public static void CombineListsToOne<TSource, TDest>(IList<TDest> destination, bool sorted, params IList<TSource>[] sources)
-            where TSource : TDest, IComparable
-            where TDest : class, ICSharpCode.AvalonEdit.CodeCompletion.ICompletionData
+        //public static void CombineListsToOne<TSource, TDest>(IList<TDest> destination, bool sorted, params IList<TSource>[] sources)
+        public static void CombineListsToOne(IList<ICSharpCode.AvalonEdit.CodeCompletion.ICompletionData> destination, bool sorted, params CompletionList[] sources)
+        //where TSource : TDest, IComparable
+        //where TDest : class, ICSharpCode.AvalonEdit.CodeCompletion.ICompletionData
         {
             // 开始操作时，不清空目标数组
+            // 目标数组内部参与排序
             if (destination == null)
             {
                 throw new ArgumentNullException("destination");
@@ -177,31 +180,50 @@ namespace DanmakuKun
                     throw new ArgumentNullException("sources[" + i.ToString() + "]");
                 }
             }
+            //var tempList = new SortedList<TSource, TSource>();
+            IDictionary<string, CompletionList> tempList;
             if (sorted)
             {
-                var tempList = new SortedList<TSource, TSource>();
-                foreach (var list in sources)
-                {
-                    foreach (var item in list)
-                    {
-                        //System.Diagnostics.Debug.Print(item.Text);
-                        tempList.Add(item, item);
-                    }
-                }
-                foreach (var item in tempList)
-                {
-                    destination.Add(item.Value);
-                }
+                tempList = new SortedList<string, CompletionList>();
             }
             else
             {
-                foreach (var list in sources)
+                tempList = new Dictionary<string, CompletionList>();
+            }
+            foreach (var completionData in destination)
+            {
+                var dataList = completionData as CompletionList;
+                if (dataList != null)
                 {
-                    foreach (var item in list)
+                    if (tempList.Keys.Contains(completionData.Text))
                     {
-                        destination.Add(item);
+                        tempList[dataList.Text].Concat(dataList);
+                    }
+                    else
+                    {
+                        tempList.Add(dataList.Text, dataList);
                     }
                 }
+            }
+            foreach (var completionLists in sources)
+            {
+                foreach (var completionData in completionLists)
+                {
+                    // 如果没有，就加入；有，就合并
+                    if (tempList.Keys.Contains(completionData.Text))
+                    {
+                        tempList[completionData.Text].List.Add(completionData);
+                    }
+                    else
+                    {
+                        tempList.Add(completionData.Text, completionData);
+                    }
+                }
+            }
+            destination.Clear();
+            foreach (var item in tempList)
+            {
+                destination.Add(item.Value);
             }
         }
     }

@@ -50,13 +50,16 @@ namespace DanmakuKun
             }
         }
 
-        public override object Description
-        {
-            get
-            {
-                return base.Description + "\nSource: " + _source;
-            }
-        }
+        //public override object Content
+        //{
+        //    get
+        //    {
+        //        TextBlock txt = new TextBlock();
+        //        txt.Inlines.Add(this.Text);
+        //        txt.Inlines.Add(new Italic(new Run(" @" + this.Source)));
+        //        return txt;
+        //    }
+        //}
 
         public override int CompareTo(object obj)
         {
@@ -69,17 +72,6 @@ namespace DanmakuKun
             else
             {
                 return base.CompareTo(obj);
-            }
-        }
-
-        public override object Content
-        {
-            get
-            {
-                TextBlock txt = new TextBlock();
-                txt.Inlines.Add(this.Text);
-                txt.Inlines.Add(new Italic(new Run(" @" + this.Source)));
-                return txt;
             }
         }
 

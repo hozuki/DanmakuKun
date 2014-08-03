@@ -9,7 +9,7 @@ namespace DanmakuKun
     public static class CompletionListReader
     {
 
-        public static void Read(string filename, IDictionary<string, IList<CompletionData>> dict)
+        public static void Read(string filename, IDictionary<string, CompletionList> dict)
         {
             using (XmlTextReader reader = new XmlTextReader(filename))
             {
@@ -17,7 +17,7 @@ namespace DanmakuKun
                 {
                     string listName;
                     string listStatic;
-                    reader.ReadStartElement("lists");
+                    reader.ReadStartElement("completion-lists");
                     while (reader.IsStartElement("list"))
                     {
                         listName = reader.GetAttribute("name");
@@ -97,14 +97,14 @@ namespace DanmakuKun
                             }
                             if (data != null)
                             {
-                                IList<CompletionData> list;
+                                CompletionList list;
                                 dict.TryGetValue(listName, out list);
                                 if (list == null)
                                 {
-                                    list = new List<CompletionData>();
+                                    list = new CompletionList();
                                     dict.Add(listName, list);
                                 }
-                                list.Add(data);
+                                list.List.Add(data);
                             }
                             reader.ReadElementString();
                         }
