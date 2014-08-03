@@ -75,4 +75,22 @@ function keyCallback(key:int):void;">
     <a name="val2" type="Number" d="一个数字或表达式。" />
     <a name="... rest" type="Number" d="一个数字或表达式。Math.min() 可以接受多个参数。" hideInHeader="true" />
   </f>
+  <f name="Math.pow" type="Number" source="Math" modifiers="Static" d="计算并返回 base 的 pow 次幂。" return="base 的 pow 次幂的值。">
+    <a name="base" type="Number" d="将自乘参数 pow 次的数字。" />
+    <a name="pow" type="Number" d="指定参数 base 的自乘次数的数字。" />
+  </f>
+  <f name="Math.random" type="Number" source="Math" modifiers="Static" d="返回一个伪随机数 n，其中 0 &lt;= n &lt; 1。因为该计算不可避免地包含某些非随机的成分，所以返回的数字以保密方式计算且为“伪随机数”。" return="一个伪随机数。">
+  </f>
+  <f name="Math.round" type="Number" source="Math" modifiers="Static" d="将参数 val 的值向上或向下舍入为最接近的整数并返回该值。如果 val 与最接近的两个整数等距离（即该数字以 .5 结尾），则该值向上舍入为下一个较大的整数。" return="参数 val 舍入为最近的整数。">
+    <a name="val" type="Number" d="要舍入的数字。。" />
+  </f>
+  <f name="Math.sin" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回指定角度的正弦值。要计算弧度，请参阅 Math 类的概述。" return="一个数字；指定角度的正弦值（介于 -1.0 和 1.0 之间）。">
+    <a name="angleRadians" type="Number" d="一个数字，它表示一个以弧度为单位的角度。" />
+  </f>
+  <f name="Math.sqrt" type="Number" source="Math" modifiers="Static" d="计算并返回指定数字的平方根。" return="如果参数 val 大于等于 0，则为一个数字，否则为 NaN（非数字）。">
+    <a name="val" type="Number" d="一个大于等于 0 的数字或表达式。" />
+  </f>
+  <f name="Math.tan" type="Number" source="Math" modifiers="Static" d="计算并返回指定角度的正切值。要计算弧度，请参阅 Math 类的概述。" return="一个数字，它表示一个以弧度为单位的角度。">
+    <a name="val" type="Number" d="参数 angleRadians 的正切值。" />
+  </f>
 </insight>

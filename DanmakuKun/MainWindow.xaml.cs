@@ -93,8 +93,9 @@ namespace DanmakuKun
             //                System.Diagnostics.Debug.Print(ex.Message);
             //            }
 
-            CompletionListReader.Read("resources/func_prop-js.xml", BiliLists.PresetFuncAndProp);
-            CompletionListReader.Read("resources/func_prop.xml", BiliLists.PresetFuncAndProp);
+            CompletionListReader.Read("resources/comp-func_prop-js.xml", BiliLists.PresetFuncAndProp);
+            CompletionListReader.Read("resources/comp-func_prop.xml", BiliLists.PresetFuncAndProp);
+            CompletionListReader.Read("resources/comp-keyword-js.xml", BiliLists.PresetKeyword);
             InsightListReader.Read("resources/insight-js.xml", BiliLists.PresetInsight);
             InsightListReader.Read("resources/insight.xml", BiliLists.PresetInsight);
             // 开始首次合并
@@ -255,7 +256,8 @@ namespace DanmakuKun
                                         BiliLists.LocalFuncAndProp["$CommentData"],
                                         BiliLists.LocalFuncAndProp["$ITween"],
                                         BiliLists.LocalFuncAndProp["$Timer"],
-                                        BiliLists.LocalFuncAndProp["$String"]);
+                                        BiliLists.LocalFuncAndProp["$String"],
+                                        BiliLists.PresetKeyword["Keyword"]);
                                     if (isGraphicsObject)
                                     {
                                         //Utils.OneListToAnother(BiliLists.PresetFuncAndProp["$Graphics"], data);
@@ -293,7 +295,7 @@ namespace DanmakuKun
 
                             if (!string.IsNullOrEmpty(functionName))
                             {
-                                FunctionModifiers functionFilter = FunctionModifiers.None;
+                                ItemModifiers functionFilter = ItemModifiers.None;
                                 if (functionName.StartsWith("$."))
                                 {
                                     functionName = "Display." + (functionName.Length > 2 ? functionName.Substring(2, functionName.Length - 2) : string.Empty);

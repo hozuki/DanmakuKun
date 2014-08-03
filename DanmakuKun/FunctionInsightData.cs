@@ -24,14 +24,14 @@ namespace DanmakuKun
         protected string _returnTypeName;
         protected string _returnDescription;
         protected string _remarks;
-        protected FunctionModifiers _modifiers;
+        protected ItemModifiers _modifiers;
 
-        public FunctionInsightData(string name, string returnTypeName, string source, string description, FunctionModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
+        public FunctionInsightData(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
         {
             InitializeInternal(name, returnTypeName, source, description, modifiers, returnDescription, remarks, arguments);
         }
 
-        private void InitializeInternal(string name, string returnTypeName, string source, string description, FunctionModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
+        private void InitializeInternal(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
         {
             _name = name;
             if (string.IsNullOrEmpty(_name))
@@ -115,7 +115,7 @@ namespace DanmakuKun
             }
         }
 
-        public FunctionModifiers Modifiers
+        public ItemModifiers Modifiers
         {
             get
             {
@@ -159,7 +159,7 @@ namespace DanmakuKun
                 }
             }
             visibleArgs = null;
-            if ((_modifiers & FunctionModifiers.Params) != 0)
+            if ((_modifiers & ItemModifiers.Params) != 0)
             {
                 tb.Inlines.Add(", ");
                 tb.Inlines.Add(new Bold(new Run("... rest")));
@@ -169,7 +169,7 @@ namespace DanmakuKun
             {
                 tb.Inlines.Add(" @" + _source);
             }
-            if ((_modifiers & FunctionModifiers.Static) != 0)
+            if ((_modifiers & ItemModifiers.Static) != 0)
             {
                 tb.Inlines.Add(" [静态]");
             }

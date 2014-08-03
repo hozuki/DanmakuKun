@@ -18,7 +18,7 @@ namespace DanmakuKun
             _source = source;
         }
 
-        public WithSourcePropertyCompletionData(string name, string typeName, string source, PropertyModifiers modifiers)
+        public WithSourcePropertyCompletionData(string name, string typeName, string source, ItemModifiers modifiers)
             : base(name, typeName, modifiers)
         {
             _source = source;
@@ -30,13 +30,13 @@ namespace DanmakuKun
             _source = source;
         }
 
-        public WithSourcePropertyCompletionData(string name, string typeName, string source, PropertyModifiers modifiers, string description)
+        public WithSourcePropertyCompletionData(string name, string typeName, string source, ItemModifiers modifiers, string description)
             : base(name, typeName, modifiers, description)
         {
             _source = source;
         }
 
-        public WithSourcePropertyCompletionData(string name, string typeName, string source, PropertyModifiers modifiers, string description, string replacing)
+        public WithSourcePropertyCompletionData(string name, string typeName, string source, ItemModifiers modifiers, string description, string replacing)
             : base(name, typeName, modifiers, description, replacing)
         {
             _source = source;

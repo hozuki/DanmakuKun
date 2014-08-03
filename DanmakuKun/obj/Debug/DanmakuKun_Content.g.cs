@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/func_prop-js.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/func_prop.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-func_prop-js.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-func_prop.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/danmaku-kun.ico")]
@@ -25,10 +25,11 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/propertyitemiconwriteonly.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/snippetitemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/snippetitemicon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/variableitemicon.bmp")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/variableitemicon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/fielditemicon.bmp")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/fielditemicon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insight-js.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insight.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-keyword-js.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/article.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/document.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/rendering.html")]

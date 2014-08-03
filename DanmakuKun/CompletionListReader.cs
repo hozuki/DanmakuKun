@@ -64,12 +64,12 @@ namespace DanmakuKun
                                     }
                                     break;
                                 case "property":
-                                    PropertyModifiers mod = PropertyModifiers.None;
+                                    ItemModifiers mod = ItemModifiers.None;
                                     string modifiers;
                                     modifiers = reader.GetAttribute("modifiers");
                                     if (!string.IsNullOrEmpty(modifiers))
                                     {
-                                        mod = (PropertyModifiers)Enum.Parse(typeof(PropertyModifiers), modifiers);
+                                        mod = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), modifiers);
                                     }
                                     if (string.IsNullOrEmpty(source))
                                     {
@@ -93,6 +93,9 @@ namespace DanmakuKun
                                             data = new WithSourcePropertyCompletionData(name, returnType, source, mod, description);
                                         }
                                     }
+                                    break;
+                                case "keyword":
+                                    data = new KeywordCompletionData(name, description, source);
                                     break;
                             }
                             if (data != null)

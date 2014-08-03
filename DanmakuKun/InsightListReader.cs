@@ -22,7 +22,7 @@ namespace DanmakuKun
                     string funcReturnDescription;
                     string funcRemarks;
                     string funcMod;
-                    FunctionModifiers funcMod_e;
+                    ItemModifiers funcMod_e;
                     string argName;
                     string argType;
                     string argDefaultValue;
@@ -59,10 +59,10 @@ namespace DanmakuKun
                             reader.ReadElementString();
                         }
                         reader.ReadEndElement();
-                        funcMod_e = FunctionModifiers.None;
+                        funcMod_e = ItemModifiers.None;
                         if (!string.IsNullOrEmpty(funcMod))
                         {
-                            funcMod_e = (FunctionModifiers)Enum.Parse(typeof(FunctionModifiers), funcMod);
+                            funcMod_e = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), funcMod);
                         }
                         func = new FunctionInsightData(funcName, funcReturn, funcSource, funcDescription, funcMod_e, funcReturnDescription, funcRemarks, args);
                         FunctionInsightList list;

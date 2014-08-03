@@ -80,11 +80,11 @@ namespace DanmakuKun
             return insightWindow;
         }
 
-        public InsightWindow GetInsightWindow(TextArea textArea, FunctionModifiers filter)
+        public InsightWindow GetInsightWindow(TextArea textArea, ItemModifiers filter)
         {
             if (_list.Count == 1)
             {
-                if (filter == FunctionModifiers.None || (_list[0].Modifiers & filter) != 0)
+                if (filter == ItemModifiers.None || (_list[0].Modifiers & filter) != 0)
                 {
                     return GetSingleItemInsightWindow(textArea);
                 }
@@ -102,7 +102,7 @@ namespace DanmakuKun
                 bool matchesFilter = false;
                 foreach (var item in _list)
                 {
-                    if (filter == FunctionModifiers.None || (item.Modifiers & filter) != 0)
+                    if (filter == ItemModifiers.None || (item.Modifiers & filter) != 0)
                     {
                         matchesFilter = true;
                         break;
@@ -113,7 +113,7 @@ namespace DanmakuKun
                     IList<FunctionInsightData> newList = new List<FunctionInsightData>();
                     foreach (var item in _list)
                     {
-                        if (filter == FunctionModifiers.None || (item.Modifiers & filter) != 0)
+                        if (filter == ItemModifiers.None || (item.Modifiers & filter) != 0)
                         {
                             newList.Add(item);
                         }

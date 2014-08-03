@@ -21,7 +21,7 @@ namespace DanmakuKun
         public readonly static BitmapImage PropertyItemIconReadOnly;
         public readonly static BitmapImage PropertyItemIconWriteOnly;
         public readonly static BitmapImage SnippetItemIcon;
-        public readonly static BitmapImage VariableItemIcon;
+        public readonly static BitmapImage FieldItemIcon;
 
         static CompletionItemImages()
         {
@@ -43,8 +43,8 @@ namespace DanmakuKun
             PropertyItemIconWriteOnly = new BitmapImage(uri);
             uri = new Uri(Path.Combine(currentPath, @"snippetitemicon.png"));
             SnippetItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"variableitemicon.png"));
-            VariableItemIcon = new BitmapImage(uri);
+            uri = new Uri(Path.Combine(currentPath, @"fielditemicon.png"));
+            FieldItemIcon = new BitmapImage(uri);
         }
 
         /// <summary>

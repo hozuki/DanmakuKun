@@ -30,11 +30,12 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resou
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\PropertyItemIconWriteOnly.png
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\SnippetItemIcon.bmp
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\SnippetItemIcon.png
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\VariableItemIcon.bmp
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\VariableItemIcon.png
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\danmaku-kun.ico
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Jint.dll
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\insight-js.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\insight.xml
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\func_prop-js.xml
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\func_prop.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-func_prop-js.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-func_prop.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-keyword-js.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\FieldItemIcon.bmp
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\FieldItemIcon.png

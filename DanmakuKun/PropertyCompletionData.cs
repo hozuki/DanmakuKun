@@ -11,14 +11,14 @@ namespace DanmakuKun
     {
 
         protected string _typeName;
-        protected PropertyModifiers _modifiers;
+        protected ItemModifiers _modifiers;
 
         public PropertyCompletionData(string name, string typeName)
-            : this(name, typeName, PropertyModifiers.None)
+            : this(name, typeName, ItemModifiers.None)
         {
         }
 
-        public PropertyCompletionData(string name, string typeName, PropertyModifiers modifiers)
+        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers)
             : base(name)
         {
             _typeName = typeName;
@@ -26,18 +26,18 @@ namespace DanmakuKun
         }
 
         public PropertyCompletionData(string name, string typeName, string description)
-            : this(name, typeName, PropertyModifiers.None, description)
+            : this(name, typeName, ItemModifiers.None, description)
         {
         }
 
-        public PropertyCompletionData(string name, string typeName, PropertyModifiers modifiers, string description)
+        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers, string description)
             : base(name, description)
         {
             _typeName = typeName;
             _modifiers = modifiers;
         }
 
-        public PropertyCompletionData(string name, string typeName, PropertyModifiers modifiers, string description, string replacing)
+        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers, string description, string replacing)
             : base(name, description, replacing)
         {
             _typeName = typeName;
@@ -52,7 +52,7 @@ namespace DanmakuKun
             }
         }
 
-        public virtual PropertyModifiers Modifiers
+        public virtual ItemModifiers Modifiers
         {
             get
             {
@@ -74,9 +74,9 @@ namespace DanmakuKun
             {
                 switch (_modifiers)
                 {
-                    case PropertyModifiers.ReadOnly:
+                    case ItemModifiers.ReadOnly:
                         return CompletionItemImages.PropertyItemIconReadOnly;
-                    case PropertyModifiers.WriteOnly:
+                    case ItemModifiers.WriteOnly:
                         return CompletionItemImages.PropertyItemIconWriteOnly;
                     default:
                         return CompletionItemImages.PropertyItemIcon;

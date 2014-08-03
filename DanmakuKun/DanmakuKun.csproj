@@ -73,8 +73,8 @@
     <Compile Include="CompletionData.cs" />
     <Compile Include="CompletionList.cs" />
     <Compile Include="CompletionListReader.cs" />
+    <Compile Include="FieldCompletionData.cs" />
     <Compile Include="FunctionCompletionData.cs" />
-    <Compile Include="FunctionModifiers.cs" />
     <Compile Include="FunctionInsightData.cs" />
     <Compile Include="FunctionInsightList.cs" />
     <Compile Include="FunctionOverloadProvider.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="KeywordCompletionData.cs" />
     <Compile Include="ListImmigrator.cs" />
     <Compile Include="PropertyCompletionData.cs" />
-    <Compile Include="PropertyModifiers.cs" />
+    <Compile Include="ItemModifiers.cs" />
     <Compile Include="RegexHelper.cs" />
     <Compile Include="Samples\AvalonEdit\BraceFoldingStrategy.cs" />
     <Compile Include="Samples\AvalonEdit\ColorizeAvalonEdit.cs" />
@@ -145,10 +145,10 @@
     <Resource Include="Resources\Images\Splash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Resources\func_prop-js.xml">
+    <Content Include="Resources\comp-func_prop-js.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\func_prop.xml">
+    <Content Include="Resources\comp-func_prop.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\ClassItemIcon.bmp">
@@ -196,10 +196,10 @@
     <Content Include="Resources\Images\SnippetItemIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\VariableItemIcon.bmp">
+    <Content Include="Resources\Images\FieldItemIcon.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Images\VariableItemIcon.png">
+    <Content Include="Resources\Images\FieldItemIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\insight-js.xml">
@@ -208,6 +208,10 @@
     </Content>
     <Content Include="Resources\insight.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\comp-keyword-js.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Samples\AvalonEdit\article.html" />
     <Content Include="Samples\AvalonEdit\document.html" />
