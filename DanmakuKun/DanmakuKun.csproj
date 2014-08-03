@@ -74,7 +74,7 @@
     <Compile Include="CompletionList.cs" />
     <Compile Include="CompletionListReader.cs" />
     <Compile Include="FunctionCompletionData.cs" />
-    <Compile Include="FunctionFilter.cs" />
+    <Compile Include="FunctionModifiers.cs" />
     <Compile Include="FunctionInsightData.cs" />
     <Compile Include="FunctionInsightList.cs" />
     <Compile Include="FunctionOverloadProvider.cs" />

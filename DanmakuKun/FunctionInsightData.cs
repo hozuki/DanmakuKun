@@ -131,23 +131,6 @@ namespace DanmakuKun
             }
         }
 
-        public virtual string GetFunctionHeader()
-        {
-            string s = "function " + _name + "(";
-            int len = _arguments.Count;
-            for (var i = 0; i < len; i++)
-            {
-                s += Arguments[i].ToString();
-                if (i != len - 1)
-                {
-                    s += ", ";
-                }
-            }
-            s += ") : " + _returnTypeName;
-            s += " @" + _source;
-            return s;
-        }
-
         public override string ToString()
         {
             return (GetContent() as TextBlock).Text;
@@ -157,15 +140,29 @@ namespace DanmakuKun
         {
             var tb = new TextBlock();
             tb.Inlines.Add("function " + _name + "(");
-            int len = _arguments.Count;
+            IList<ArgumentInsightData> visibleArgs = new List<ArgumentInsightData>();
+            foreach (var arg in _arguments)
+            {
+                if (!arg.HideInHeader)
+                {
+                    visibleArgs.Add(arg);
+                }
+            }
+            int len = visibleArgs.Count;
             for (var i = 0; i < len; i++)
             {
-                tb.Inlines.Add(new Bold(new Run(_arguments[i].Name)));
-                tb.Inlines.Add(" : " + _arguments[i].GetTypeAndDefaultValue());
+                tb.Inlines.Add(new Bold(new Run(visibleArgs[i].Name)));
+                tb.Inlines.Add(" : " + visibleArgs[i].GetTypeAndDefaultValue());
                 if (i < len - 1)
                 {
                     tb.Inlines.Add(", ");
                 }
+            }
+            visibleArgs = null;
+            if ((_modifiers & FunctionModifiers.Params) != 0)
+            {
+                tb.Inlines.Add(", ");
+                tb.Inlines.Add(new Bold(new Run("... rest")));
             }
             tb.Inlines.Add(") : " + _returnTypeName);
             if (withSource)

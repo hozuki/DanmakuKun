@@ -6,6 +6,7 @@ namespace DanmakuKun
     public enum FunctionModifiers
     {
         None = 0,
-        Static = 1
+        Static = 1,
+        Params = 2
     }
 }

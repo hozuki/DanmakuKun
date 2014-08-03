@@ -34,4 +34,45 @@ function keyCallback(key:int):void;">
     <a name="t" type="String" d="播放声音类型" />
     <a name="onLoad" type="Function" d="载入完成时的回调函数" default="null" />
   </f>
+  <f name="Math.abs" type="Number" source="Math" modifiers="Static" d="计算并返回由参数 val 指定的数字的绝对值。" return="指定参数的绝对值。">
+    <a name="val" type="Number" d="要返回绝对值的数字。" />
+  </f>
+  <f name="Math.acos" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回由参数 val 指定的数字的反余弦值。" return="参数 val 的反余弦值。">
+    <a name="val" type="Number" d="-1.0 到 1.0 之间的一个数字。" />
+  </f>
+  <f name="Math.asin" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回由参数 val 指定的数字的反正弦值。" return="参数 val 的正余弦值。">
+    <a name="val" type="Number" d="-1.0 到 1.0 之间的一个数字。" />
+  </f>
+  <f name="Math.atan" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回角度值，该角度的正切值已由参数 val 指定。返回值介于负二分之 pi 和正二分之 pi 之间。" return="介于负二分之 pi 和正二分之 pi 之间的一个数字。">
+    <a name="val" type="Number" d="表示角的正切值的一个数字。" />
+  </f>
+  <f name="Math.atan2" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回点 y/x 的角度，该角度从圆的 x 轴（其中，0,0 表示圆心）沿逆时针方向测量。返回值介于正 pi 和负 pi 之间。请注意，atan2 的第一个参数始终是 y 坐标。" return="一个数字。">
+    <a name="y" type="Number" d="该点的 y 坐标。" />
+    <a name="x" type="Number" d="该点的 x 坐标。" />
+  </f>
+  <f name="Math.ceil" type="Number" source="Math" modifiers="Static" d="返回指定数字或表达式的上限值。数字的上限值是大于等于该数字的最接近的整数。" return="最接近且大于等于参数 val 的整数。">
+    <a name="val" type="Number" d="一个数字或表达式。" />
+  </f>
+  <f name="Math.cos" type="Number" source="Math" modifiers="Static" d="以弧度为单位计算并返回指定角度的余弦值。要计算弧度，请参阅 Math 类的概述。" return="-1.0 到 1.0 之间的一个数字。">
+    <a name="angleRadians" type="Number" d="一个数字，它表示一个以弧度为单位的角度。" />
+  </f>
+  <f name="Math.exp" type="Number" source="Math" modifiers="Static" d="返回自然对数的底 (e) 的 x 次幂的值，x 由参数 x 指定。常量 Math.E 可以提供 e 的值。" return="e 的 x 次幂，x 由参数 val 指定。">
+    <a name="val" type="Number" d="指数；一个数字或表达式。" />
+  </f>
+  <f name="Math.floor" type="Number" source="Math" modifiers="Static" d="返回由参数 val 指定的数字或表达式的下限值。下限值是小于等于指定数字或表达式的最接近的整数。" return="最接近且小于等于参数 val 的整数。">
+    <a name="val" type="Number" d="一个数字或表达式。" />
+  </f>
+  <f name="Math.log" type="Number" source="Math" modifiers="Static" d="返回参数 val 的自然对数。" return="参数 val 的自然对数。">
+    <a name="val" type="Number" d="其值大于 0 的数字或表达式。" />
+  </f>
+  <f name="Math.max" type="Number" source="Math" modifiers="Static,Params" d="计算 val1 和 val2（或更多的值）并返回最大值。" return="参数 val1 和 val2（或更多值）的最大值。">
+    <a name="val1" type="Number" d="一个数字或表达式。" />
+    <a name="val2" type="Number" d="一个数字或表达式。" />
+    <a name="... rest" type="Number" d="一个数字或表达式。Math.max() 可以接受多个参数。" hideInHeader="true" />
+  </f>
+  <f name="Math.min" type="Number" source="Math" modifiers="Static,Params" d="计算 val1 和 val2（或更多的值）并返回最小值。" return="参数 val1 和 val2（或更多值）的最小值。">
+    <a name="val1" type="Number" d="一个数字或表达式。" />
+    <a name="val2" type="Number" d="一个数字或表达式。" />
+    <a name="... rest" type="Number" d="一个数字或表达式。Math.min() 可以接受多个参数。" hideInHeader="true" />
+  </f>
 </insight>

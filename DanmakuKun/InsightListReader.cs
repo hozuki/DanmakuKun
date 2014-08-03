@@ -27,6 +27,8 @@ namespace DanmakuKun
                     string argType;
                     string argDefaultValue;
                     string argDescription;
+                    string argHideInHeader;
+                    bool argHideInHeader_b;
                     IList<ArgumentInsightData> args = new List<ArgumentInsightData>();
                     FunctionInsightData func;
                     reader.ReadStartElement("insight");
@@ -46,8 +48,14 @@ namespace DanmakuKun
                             argName = reader.GetAttribute("name");
                             argType = reader.GetAttribute("type");
                             argDefaultValue = reader.GetAttribute("default");
+                            argHideInHeader = reader.GetAttribute("hideInHeader");
+                            argHideInHeader_b = false;
                             argDescription = reader.GetAttribute("d");
-                            args.Add(new ArgumentInsightData(argName, argType, argDefaultValue, argDescription));
+                            if (!string.IsNullOrEmpty(argHideInHeader))
+                            {
+                                argHideInHeader_b = bool.Parse(argHideInHeader);
+                            }
+                            args.Add(new ArgumentInsightData(argName, argType, argHideInHeader_b, argDefaultValue, argDescription));
                             reader.ReadElementString();
                         }
                         reader.ReadEndElement();
