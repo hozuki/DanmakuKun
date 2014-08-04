@@ -58,6 +58,9 @@ namespace DanmakuKun
                                 case "constant":
                                     data = new ConstantCompletionData(name, returnType, description, source);
                                     break;
+                                case "field":
+                                    data = new FieldCompletionData(name, returnType, description, source, mod);
+                                    break;
                                 default:
                                     break;
                             }

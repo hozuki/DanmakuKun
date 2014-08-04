@@ -32,6 +32,7 @@
     <item name="drawRect" type="function" return="void" source="Graphics" />
     <item name="drawRoundRect" type="function" return="void" source="Graphics" />
     <item name="endFill" type="function" return="void" source="Graphics" />
+    <item name="fieldTest" type="field" return="SomeClass" source="Graphics" description="Field test" />
     <item name="lineGradientStyle" type="function" return="void" source="Graphics" />
     <item name="lineStyle" type="function" return="void" source="Graphics" />
     <item name="lineTo" type="function" return="void" source="Graphics" />
