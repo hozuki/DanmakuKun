@@ -27,7 +27,8 @@ namespace DanmakuKun
                             listName = "$" + listName;
                         }
                         reader.ReadStartElement("list");
-                        string name, type, returnType, description, source;
+                        string name, type, returnType, description, source, modifiers;
+                        ItemModifiers mod;
                         CompletionData data;
                         while (reader.IsStartElement("item"))
                         {
@@ -37,65 +38,27 @@ namespace DanmakuKun
                             returnType = reader.GetAttribute("return");
                             description = reader.GetAttribute("description");
                             source = reader.GetAttribute("source");
+                            modifiers = reader.GetAttribute("modifiers");
+                            mod = ItemModifiers.None;
+                            if (!string.IsNullOrEmpty(modifiers))
+                            {
+                                mod = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), modifiers);
+                            }
                             switch (type)
                             {
                                 case "function":
-                                    if (string.IsNullOrEmpty(source))
-                                    {
-                                        if (string.IsNullOrEmpty(description))
-                                        {
-                                            data = new FunctionCompletionData(name, returnType);
-                                        }
-                                        else
-                                        {
-                                            data = new FunctionCompletionData(name, returnType, description);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (string.IsNullOrEmpty(description))
-                                        {
-                                            data = new WithSourceFunctionCompletionData(name, returnType, source);
-                                        }
-                                        else
-                                        {
-                                            data = new WithSourceFunctionCompletionData(name, returnType, source, description);
-                                        }
-                                    }
+                                    data = new FunctionCompletionData(name, returnType, description, source, mod);
                                     break;
                                 case "property":
-                                    ItemModifiers mod = ItemModifiers.None;
-                                    string modifiers;
-                                    modifiers = reader.GetAttribute("modifiers");
-                                    if (!string.IsNullOrEmpty(modifiers))
-                                    {
-                                        mod = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), modifiers);
-                                    }
-                                    if (string.IsNullOrEmpty(source))
-                                    {
-                                        if (string.IsNullOrEmpty(description))
-                                        {
-                                            data = new PropertyCompletionData(name, returnType, mod);
-                                        }
-                                        else
-                                        {
-                                            data = new PropertyCompletionData(name, returnType, mod, description);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (string.IsNullOrEmpty(description))
-                                        {
-                                            data = new WithSourcePropertyCompletionData(name, returnType, source, mod);
-                                        }
-                                        else
-                                        {
-                                            data = new WithSourcePropertyCompletionData(name, returnType, source, mod, description);
-                                        }
-                                    }
+                                    data = new PropertyCompletionData(name, returnType, description, source, mod);
                                     break;
                                 case "keyword":
                                     data = new KeywordCompletionData(name, description, source);
+                                    break;
+                                case "constant":
+                                    data = new ConstantCompletionData(name, returnType, description, source);
+                                    break;
+                                default:
                                     break;
                             }
                             if (data != null)

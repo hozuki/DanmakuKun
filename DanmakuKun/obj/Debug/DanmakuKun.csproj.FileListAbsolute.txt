@@ -39,3 +39,5 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resou
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-keyword-js.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\FieldItemIcon.bmp
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\FieldItemIcon.png
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\ConstantItemIcon.bmp
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\ConstantItemIcon.png

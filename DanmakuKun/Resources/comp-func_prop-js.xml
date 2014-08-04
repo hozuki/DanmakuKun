@@ -8,11 +8,13 @@
     <item name="atan2" type="function" return="Number" description="反正切" />
     <item name="ceil" type="function" return="Number" description="返回上限整数" />
     <item name="cos" type="function" return="Number" description="余弦" />
+    <item name="E" type="constant" return="Number" description="自然对数底数" />
     <item name="exp" type="function" return="Number" description="以e为底的指数" />
     <item name="floor" type="function" return="Number" description="返回下限整数" />
     <item name="log" type="function" return="Number" description="自然对数" />
     <item name="max" type="function" return="Number" description="返回最大值" />
     <item name="min" type="function" return="Number" description="返回最大值" />
+    <item name="PI" type="constant" return="Number" description="π" />
     <item name="pow" type="function" return="Number" description="计算幂函数" />
     <item name="random" type="function" return="Number" description="返回伪随机数" />
     <item name="round" type="function" return="Number" description="四舍五入取整" />

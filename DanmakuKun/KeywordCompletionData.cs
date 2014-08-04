@@ -9,39 +9,27 @@ using System.Windows.Media;
 
 namespace DanmakuKun
 {
-    public class KeywordCompletionData : CompletionData, IWithSourceObject
+    public class KeywordCompletionData : CompletionData
     {
 
-        private string _source;
-
-        public KeywordCompletionData(string text)
-            : this(text, string.Empty)
+        public KeywordCompletionData(string name)
+            : this(name, null)
         {
         }
 
-        public KeywordCompletionData(string text, string description)
-            : this(text, description, null)
+        public KeywordCompletionData(string name, string description)
+            : this(name, description, null)
         {
         }
 
-        public KeywordCompletionData(string text, string description, string source)
-            : base(text, description)
+        public KeywordCompletionData(string name, string description, string source)
+            : this(name, description, source, null)
         {
-            _source = source;
-            if (_source == null)
-            {
-                _source = string.Empty;
-            }
         }
 
-        public KeywordCompletionData(string text, string description, string source, string replacing)
-            : base(text, description, replacing)
+        public KeywordCompletionData(string name, string description, string source, string replacing)
+            : base(name, description, source, ItemModifiers.None, replacing)
         {
-            _source = source;
-            if (_source == null)
-            {
-                _source = string.Empty;
-            }
         }
 
         //public override object Content
@@ -56,7 +44,7 @@ namespace DanmakuKun
         //    }
         //}
 
-        public override System.Windows.Media.ImageSource Image
+        public override ImageSource Image
         {
             get
             {
@@ -64,12 +52,5 @@ namespace DanmakuKun
             }
         }
 
-        public string Source
-        {
-            get
-            {
-                return _source;
-            }
-        }
     }
 }

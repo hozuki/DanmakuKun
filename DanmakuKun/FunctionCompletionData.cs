@@ -2,32 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Documents;
+using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace DanmakuKun
 {
     public class FunctionCompletionData : CompletionData
     {
 
+        protected string _source;
         protected string _returnTypeName;
 
-        public FunctionCompletionData(string text, string returnTypeName)
-            : base(text)
+        public const string DefaultReturnTypeName = "int";
+
+        public FunctionCompletionData(string name, string returnTypeName)
+            : this(name, returnTypeName, null)
         {
-            _returnTypeName = returnTypeName;
         }
 
-        public FunctionCompletionData(string text, string returnTypeName, string description)
-            : base(text, description)
+        public FunctionCompletionData(string name, string returnTypeName, string description)
+            : this(name, returnTypeName, description, null)
         {
-            _returnTypeName = returnTypeName;
         }
 
-        public FunctionCompletionData(string text, string returnTypeName, string description, string replacing)
-            : base(text, description, replacing)
+        public FunctionCompletionData(string name, string returnTypeName, string description, ItemModifiers modifiers)
+            : this(name, returnTypeName, description, null, modifiers)
+        {
+        }
+
+        public FunctionCompletionData(string name, string returnTypeName, string description, string source)
+            : this(name, returnTypeName, description, source, ItemModifiers.None)
+        {
+        }
+
+        public FunctionCompletionData(string name, string returnTypeName, string description, string source, ItemModifiers modifiers)
+            : this(name, returnTypeName, description, source, modifiers, name)
+        {
+        }
+
+        public FunctionCompletionData(string name, string returnTypeName, string description, string source, ItemModifiers modifiers, string replacing)
+            : base(name, description, source, modifiers, replacing)
         {
             _returnTypeName = returnTypeName;
+            if (string.IsNullOrEmpty(_returnTypeName))
+            {
+                _returnTypeName = DefaultReturnTypeName;
+            }
         }
 
         public virtual string ReturnTypeName
@@ -46,7 +67,7 @@ namespace DanmakuKun
             }
         }
 
-        public override System.Windows.Media.ImageSource Image
+        public override ImageSource Image
         {
             get
             {

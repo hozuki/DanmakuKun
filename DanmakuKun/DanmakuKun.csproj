@@ -73,8 +73,8 @@
     <Compile Include="CompletionData.cs" />
     <Compile Include="CompletionList.cs" />
     <Compile Include="CompletionListReader.cs" />
+    <Compile Include="ConstantCompletionData.cs" />
     <Compile Include="FieldCompletionData.cs" />
-    <Compile Include="FunctionCompletionData.cs" />
     <Compile Include="FunctionInsightData.cs" />
     <Compile Include="FunctionInsightList.cs" />
     <Compile Include="FunctionOverloadProvider.cs" />
@@ -95,8 +95,7 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
-    <Compile Include="WithSourceFunctionCompletionData.cs" />
-    <Compile Include="WithSourcePropertyCompletionData.cs" />
+    <Compile Include="FunctionCompletionData.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +154,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\ClassItemIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\ConstantItemIcon.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\ConstantItemIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\danmaku-kun.ico">

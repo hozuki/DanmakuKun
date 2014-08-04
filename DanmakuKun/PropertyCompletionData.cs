@@ -4,71 +4,44 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Text;
+using System.Windows.Media;
 
 namespace DanmakuKun
 {
-    public class PropertyCompletionData : CompletionData
+    public class PropertyCompletionData : FieldCompletionData
     {
 
-        protected string _typeName;
-        protected ItemModifiers _modifiers;
-
         public PropertyCompletionData(string name, string typeName)
-            : this(name, typeName, ItemModifiers.None)
+            : base(name, typeName)
         {
-        }
-
-        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers)
-            : base(name)
-        {
-            _typeName = typeName;
-            _modifiers = modifiers;
         }
 
         public PropertyCompletionData(string name, string typeName, string description)
-            : this(name, typeName, ItemModifiers.None, description)
+            : base(name, typeName, description)
         {
         }
 
-        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers, string description)
-            : base(name, description)
+        public PropertyCompletionData(string name, string typeName, string description, ItemModifiers modifiers)
+            : base(name, typeName, description, modifiers)
         {
-            _typeName = typeName;
-            _modifiers = modifiers;
         }
 
-        public PropertyCompletionData(string name, string typeName, ItemModifiers modifiers, string description, string replacing)
-            : base(name, description, replacing)
+        public PropertyCompletionData(string name, string typeName, string description, string source)
+            : base(name, typeName, description, source)
         {
-            _typeName = typeName;
-            _modifiers = modifiers;
         }
 
-        public virtual string TypeName
+        public PropertyCompletionData(string name, string typeName, string description, string source, ItemModifiers modifiers)
+            : base(name, typeName, description, source, modifiers)
         {
-            get
-            {
-                return _typeName;
-            }
         }
 
-        public virtual ItemModifiers Modifiers
+        public PropertyCompletionData(string name, string typeName, string description, string source, ItemModifiers modifiers, string replacing)
+            : base(name, typeName, description, source, modifiers, replacing)
         {
-            get
-            {
-                return _modifiers;
-            }
         }
 
-        public override string Text
-        {
-            get
-            {
-                return _text + " : " + _typeName;
-            }
-        }
-
-        public override System.Windows.Media.ImageSource Image
+        public override ImageSource Image
         {
             get
             {
@@ -81,17 +54,6 @@ namespace DanmakuKun
                     default:
                         return CompletionItemImages.PropertyItemIcon;
                 }
-            }
-        }
-
-        public override object Content
-        {
-            get
-            {
-                TextBlock txt = new TextBlock();
-                txt.Inlines.Add(_text + " : ");
-                txt.Inlines.Add(new Bold(new Run(_typeName)));
-                return txt;
             }
         }
 

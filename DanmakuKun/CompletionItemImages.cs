@@ -22,29 +22,30 @@ namespace DanmakuKun
         public readonly static BitmapImage PropertyItemIconWriteOnly;
         public readonly static BitmapImage SnippetItemIcon;
         public readonly static BitmapImage FieldItemIcon;
+        public readonly static BitmapImage ConstantItemIcon;
 
         static CompletionItemImages()
         {
-            string currentPath;
-            currentPath = Environment.CurrentDirectory;
-            currentPath = Path.Combine(currentPath, @"resources/images");
+            string currentPath = @"pack://application:,,,/resources/images/";
             Uri uri;
-            uri = new Uri(Path.Combine(currentPath, "classitemicon.png"));
+            uri = new Uri(currentPath + "classitemicon.png");
             ClassItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"functionitemicon.png"));
+            uri = new Uri(currentPath + @"functionitemicon.png");
             FunctionItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"keyworditemicon.png"));
+            uri = new Uri(currentPath + @"keyworditemicon.png");
             KeywordItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"propertyitemicon.png"));
+            uri = new Uri(currentPath + @"propertyitemicon.png");
             PropertyItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"propertyitemiconreadonly.png"));
+            uri = new Uri(currentPath + @"propertyitemiconreadonly.png");
             PropertyItemIconReadOnly = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"propertyitemiconwriteonly.png"));
+            uri = new Uri(currentPath + @"propertyitemiconwriteonly.png");
             PropertyItemIconWriteOnly = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"snippetitemicon.png"));
+            uri = new Uri(currentPath + @"snippetitemicon.png");
             SnippetItemIcon = new BitmapImage(uri);
-            uri = new Uri(Path.Combine(currentPath, @"fielditemicon.png"));
+            uri = new Uri(currentPath + @"fielditemicon.png");
             FieldItemIcon = new BitmapImage(uri);
+            uri = new Uri(currentPath + @"constantitemicon.png");
+            ConstantItemIcon = new BitmapImage(uri);
         }
 
         /// <summary>

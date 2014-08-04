@@ -17,7 +17,7 @@ namespace DanmakuKun
             {
                 throw new ArgumentNullException("y");
             }
-            return string.Compare(x.Text, y.Text);
+            return x.CompareTo(y);
         }
     }
 }

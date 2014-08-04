@@ -12,6 +12,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-func_prop.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/constantitemicon.bmp")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/constantitemicon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/danmaku-kun.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/functionitemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/functionitemicon.png")]
