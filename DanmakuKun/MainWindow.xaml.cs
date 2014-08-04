@@ -98,6 +98,7 @@ namespace DanmakuKun
             CompletionListReader.Read("resources/comp-keyword-js.xml", BiliLists.PresetKeyword);
             InsightListReader.Read("resources/insight-js.xml", BiliLists.PresetInsight);
             InsightListReader.Read("resources/insight.xml", BiliLists.PresetInsight);
+            SnippetListReader.Read("resources/snippet.xml", BiliLists.PresetSnippet);
             // 开始首次合并
             ListImmigrator.Concat<CompletionList, CompletionData>(BiliLists.LocalFuncAndProp, BiliLists.PresetFuncAndProp, BiliLists.UserFuncAndProp);
             ListImmigrator.Concat<FunctionInsightList, FunctionInsightData>(BiliLists.LocalInsight, BiliLists.PresetInsight, BiliLists.UserInsight);
@@ -257,7 +258,8 @@ namespace DanmakuKun
                                         BiliLists.LocalFuncAndProp["$ITween"],
                                         BiliLists.LocalFuncAndProp["$Timer"],
                                         BiliLists.LocalFuncAndProp["$String"],
-                                        BiliLists.PresetKeyword["Keyword"]);
+                                        BiliLists.PresetKeyword["Keyword"],
+                                        BiliLists.PresetSnippet["Snippet"]);
                                     if (isGraphicsObject)
                                     {
                                         //Utils.OneListToAnother(BiliLists.PresetFuncAndProp["$Graphics"], data);

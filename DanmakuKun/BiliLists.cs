@@ -16,6 +16,7 @@ namespace DanmakuKun
         public readonly static IDictionary<string, FunctionInsightList> UserInsight;
         public readonly static IDictionary<string, FunctionInsightList> LocalInsight;
         public readonly static IDictionary<string, CompletionList> PresetKeyword;
+        public readonly static IDictionary<string, CompletionList> PresetSnippet;
 
         private BiliLists()
         {
@@ -30,6 +31,7 @@ namespace DanmakuKun
             UserInsight = new Dictionary<string, FunctionInsightList>();
             LocalInsight = new Dictionary<string, FunctionInsightList>();
             PresetKeyword = new Dictionary<string, CompletionList>();
+            PresetSnippet = new Dictionary<string, CompletionList>();
         }
 
         /// <summary>

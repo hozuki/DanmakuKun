@@ -41,3 +41,4 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resou
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\FieldItemIcon.png
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\ConstantItemIcon.bmp
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\Images\ConstantItemIcon.png
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\snippet.xml
