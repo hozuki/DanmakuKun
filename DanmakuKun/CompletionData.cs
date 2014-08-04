@@ -18,9 +18,6 @@ namespace DanmakuKun
         protected string _source;
         protected ItemModifiers _modifiers;
 
-        public const string DefaultSource = "(全局)";
-        public const string DefaultName = "(NoName)";
-
         public CompletionData(string text)
             : this(text, null)
         {
@@ -37,7 +34,7 @@ namespace DanmakuKun
         }
 
         public CompletionData(string text, string description, string source)
-            : this(text, description, source, ItemModifiers.None)
+            : this(text, description, source, DV.DefaultModifiers)
         {
         }
 
@@ -51,12 +48,12 @@ namespace DanmakuKun
             _text = text;
             if (_text == null)
             {
-                _text = DefaultName;
+                _text = DV.DefaultName;
             }
             _source = source;
             if (_source == null)
             {
-                _source = DefaultSource;
+                _source = DV.DefaultSource;
             }
             _description = description;
             if (_description == null)

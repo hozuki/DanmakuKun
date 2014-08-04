@@ -8,8 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-func_prop-js.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-func_prop.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-classes.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-funcs_props-js.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-funcs_props.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/classitemicon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/constantitemicon.bmp")]
@@ -29,10 +30,10 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/snippetitemicon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/fielditemicon.bmp")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/fielditemicon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insight-js.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insight.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-keyword-js.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/snippet.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insights-js.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insights.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-keywords-js.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-snippets.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/article.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/document.html")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/rendering.html")]

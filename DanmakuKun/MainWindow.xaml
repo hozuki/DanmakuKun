@@ -19,7 +19,14 @@
             <MenuItem Header="撤销(_U)" Command="ApplicationCommands.Undo"/>
             <MenuItem Header="重做(_R)" Command="ApplicationCommands.Redo"/>
         </ContextMenu>
+        <RoutedUICommand x:Key="ShowSenseList" Text="Show _Sense List" />
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+J" Command="{StaticResource ShowSenseList}" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource ShowSenseList}" CanExecute="ShowSenseList_CanExecute" Executed="ShowSenseList_Executed" />
+    </Window.CommandBindings>
     <DockPanel>
         <Menu x:Name="mainMenu" DockPanel.Dock="Top">
             <MenuItem x:Name="mnuFile" Header="文件(_F)">
@@ -44,6 +51,7 @@
                 <MenuItem Header="Show _End of Line" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=Options.ShowEndOfLine}"/>
                 -->
                 <MenuItem Header="启用智能感知(_S)" IsCheckable="True" IsChecked="{Binding ElementName=DkMainWindow,Path=IntellisenseActivated}"/>
+                <MenuItem Command="{StaticResource ShowSenseList}" InputGestureText="Ctrl+J" />
             </MenuItem>
         </Menu>
         <Grid>
@@ -51,7 +59,7 @@
 				Name="editor"
 				FontFamily="Courier New"
 				FontSize="10pt"
-				SyntaxHighlighting="C#" Grid.ColumnSpan="2"
+				SyntaxHighlighting="JavaScript" Grid.ColumnSpan="2"
 			>
             </avalonEdit:TextEditor>
         </Grid>

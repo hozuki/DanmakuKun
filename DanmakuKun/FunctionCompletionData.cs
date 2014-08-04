@@ -11,10 +11,7 @@ namespace DanmakuKun
     public class FunctionCompletionData : CompletionData
     {
 
-        protected string _source;
         protected string _returnTypeName;
-
-        public const string DefaultReturnTypeName = "int";
 
         public FunctionCompletionData(string name, string returnTypeName)
             : this(name, returnTypeName, null)
@@ -47,7 +44,7 @@ namespace DanmakuKun
             _returnTypeName = returnTypeName;
             if (string.IsNullOrEmpty(_returnTypeName))
             {
-                _returnTypeName = DefaultReturnTypeName;
+                _returnTypeName = DV.DefaultTypeName;
             }
         }
 

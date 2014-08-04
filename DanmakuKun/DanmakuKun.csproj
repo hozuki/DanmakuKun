@@ -68,12 +68,14 @@
     </ApplicationDefinition>
     <Compile Include="ArgumentInsightData.cs" />
     <Compile Include="BiliLists.cs" />
+    <Compile Include="ClassCompletionData.cs" />
     <Compile Include="CompletionDataComparer.cs" />
     <Compile Include="CompletionItemImages.cs" />
     <Compile Include="CompletionData.cs" />
     <Compile Include="CompletionList.cs" />
     <Compile Include="CompletionListReader.cs" />
     <Compile Include="ConstantCompletionData.cs" />
+    <Compile Include="DV.cs" />
     <Compile Include="FieldCompletionData.cs" />
     <Compile Include="FunctionInsightData.cs" />
     <Compile Include="FunctionInsightList.cs" />
@@ -146,10 +148,13 @@
     <Resource Include="Resources\Images\Splash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Resources\comp-func_prop-js.xml">
+    <Content Include="Resources\comp-classes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\comp-func_prop.xml">
+    <Content Include="Resources\comp-funcs_props-js.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\comp-funcs_props.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\ClassItemIcon.bmp">
@@ -209,24 +214,25 @@
     <Content Include="Resources\Images\FieldItemIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\insight-js.xml">
+    <Content Include="Resources\insights-js.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Resources\insight.xml">
+    <Content Include="Resources\insights.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\comp-keyword-js.xml">
+    <Content Include="Resources\comp-keywords-js.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Resources\snippet.xml">
+    <Content Include="Resources\comp-snippets.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Samples\AvalonEdit\article.html" />
     <Content Include="Samples\AvalonEdit\document.html" />
     <Content Include="Samples\AvalonEdit\rendering.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

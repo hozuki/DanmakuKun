@@ -9,7 +9,7 @@ namespace DanmakuKun
     {
 
         /// <summary>
-        /// 将一个列表添加到另一个中，如果有重复项，则会认为是重载。适合 FunctionInsightList 和 CompletionList 使用。
+        /// 将一个列表添加到另一个中，如果有重复项，则会认为是重载。适合 FunctionInsightList 和 CompletionList 使用。（难以使用）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="destination"></param>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<completion-lists version="1.0">
+  <!--名称必须是"Keywords"，看 DV.KeywordListName-->
+  <list name="Keywords" static="true">
+    <item name="break" type="keyword" source="Keyword" d="break 关键字" />
+    <item name="case" type="keyword" source="Keyword" d="case 关键字" />
+    <item name="catch" type="keyword" source="Keyword" d="catch 关键字" />
+    <item name="continue" type="keyword" source="Keyword" d="continue 关键字" />
+    <item name="default" type="keyword" source="Keyword" d="default 关键字" />
+    <item name="delete" type="keyword" source="Keyword" d="delete 关键字" />
+    <item name="do" type="keyword" source="Keyword" d="do 关键字" />
+    <item name="else" type="keyword" source="Keyword" d="else 关键字" />
+    <item name="finally" type="keyword" source="Keyword" d="finally 关键字" />
+    <item name="for" type="keyword" source="Keyword" d="for 关键字" />
+    <item name="function" type="keyword" source="Keyword" d="function 关键字" />
+    <item name="if" type="keyword" source="Keyword" d="if 关键字" />
+    <item name="in" type="keyword" source="Keyword" d="in 关键字" />
+    <item name="instanceof" type="keyword" source="Keyword" d="instanceof 关键字" />
+    <item name="new" type="keyword" source="Keyword" d="new 关键字" />
+    <item name="return" type="keyword" source="Keyword" d="return 关键字" />
+    <item name="switch" type="keyword" source="Keyword" d="switch 关键字" />
+    <item name="this" type="keyword" source="Keyword" d="this 关键字" />
+    <item name="throw" type="keyword" source="Keyword" d="throw 关键字" />
+    <item name="try" type="keyword" source="Keyword" d="try 关键字" />
+    <item name="typeof" type="keyword" source="Keyword" d="typeof 关键字" />
+    <item name="var" type="keyword" source="Keyword" d="var 关键字" />
+    <item name="void" type="keyword" source="Keyword" d="void 关键字" />
+    <item name="while" type="keyword" source="Keyword" d="while 关键字" />
+    <item name="with" type="keyword" source="Keyword" d="with 关键字" />
+    <item name="abstract" type="keyword" source="Reserved word" d="abstract 保留字" />
+    <item name="boolean" type="keyword" source="Reserved word" d="boolean 保留字" />
+    <item name="byte" type="keyword" source="Reserved word" d="byte 保留字" />
+    <item name="char" type="keyword" source="Reserved word" d="char 保留字" />
+    <item name="class" type="keyword" source="Reserved word" d="class 保留字" />
+    <item name="const" type="keyword" source="Reserved word" d="const 保留字" />
+    <item name="debugger" type="keyword" source="Reserved word" d="debugger 保留字" />
+    <item name="double" type="keyword" source="Reserved word" d="double 保留字" />
+    <item name="enum" type="keyword" source="Reserved word" d="enum 保留字" />
+    <item name="export" type="keyword" source="Reserved word" d="export 保留字" />
+    <item name="extends" type="keyword" source="Reserved word" d="extends 保留字" />
+    <item name="fimal" type="keyword" source="Reserved word" d="fimal 保留字" />
+    <item name="float" type="keyword" source="Reserved word" d="float 保留字" />
+    <item name="goto" type="keyword" source="Reserved word" d="goto 保留字" />
+    <item name="implements" type="keyword" source="Reserved word" d="implements 保留字" />
+    <item name="import" type="keyword" source="Reserved word" d="import 保留字" />
+    <item name="int" type="keyword" source="Reserved word" d="int 保留字" />
+    <item name="interface" type="keyword" source="Reserved word" d="interface 保留字" />
+    <item name="long" type="keyword" source="Reserved word" d="long 保留字" />
+    <item name="native" type="keyword" source="Reserved word" d="native 保留字" />
+    <item name="package" type="keyword" source="Reserved word" d="package 保留字" />
+    <item name="private" type="keyword" source="Reserved word" d="private 保留字" />
+    <item name="protected" type="keyword" source="Reserved word" d="protected 保留字" />
+    <item name="public" type="keyword" source="Reserved word" d="public 保留字" />
+    <item name="short" type="keyword" source="Reserved word" d="short 保留字" />
+    <item name="static" type="keyword" source="Reserved word" d="static 保留字" />
+    <item name="super" type="keyword" source="Reserved word" d="super 保留字" />
+    <item name="synchronized" type="keyword" source="Reserved word" d="synchronized 保留字" />
+    <item name="throws" type="keyword" source="Reserved word" d="throws 保留字" />
+    <item name="transient" type="keyword" source="Reserved word" d="transient 保留字" />
+    <item name="volatile" type="keyword" source="Reserved word" d="volatile 保留字" />
+  </list>
+</completion-lists>

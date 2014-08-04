@@ -11,8 +11,6 @@ namespace DanmakuKun
     public class FieldCompletionData : CompletionData
     {
 
-        public const string DefaultTypeName = "int";
-
         string _typeName;
 
         public FieldCompletionData(string name, string typeName)
@@ -31,7 +29,7 @@ namespace DanmakuKun
         }
 
         public FieldCompletionData(string name, string typeName, string description, string source)
-            : this(name, typeName, description, source, ItemModifiers.None)
+            : this(name, typeName, description, source, DV.DefaultModifiers)
         {
         }
 
@@ -46,7 +44,7 @@ namespace DanmakuKun
             _typeName = typeName;
             if (string.IsNullOrEmpty(_typeName))
             {
-                _typeName = DefaultTypeName;
+                _typeName = DV.DefaultTypeName;
             }
         }
 

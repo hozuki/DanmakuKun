@@ -28,7 +28,7 @@ namespace DanmakuKun
         }
 
         public KeywordCompletionData(string name, string description, string source, string replacing)
-            : base(name, description, source, ItemModifiers.None, replacing)
+            : base(name, description, source, DV.DefaultModifiers, replacing)
         {
         }
 

@@ -36,8 +36,8 @@ namespace DanmakuKun
 
         public MainWindow()
         {
-            splashScreen = new SplashScreen("resources/images/splash.png");
-            splashScreen.Show(false, true);
+            //splashScreen = new SplashScreen("resources/images/splash.png");
+            //splashScreen.Show(false, true);
 
             InitializeComponent();
 
@@ -64,9 +64,7 @@ namespace DanmakuKun
         {
             IntellisenseActivated = true;
             editor.Focus();
-            editor.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.HighlightingManager.Instance.GetDefinition("JavaScript");
-
-            //editor.TextArea.Caret.PositionChanged += editor_TextArea_Caret_PositionChanged;
+            editor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy();
 
             BiliLists.Initialize();
             CompletionItemImages.Initialize();
@@ -93,30 +91,20 @@ namespace DanmakuKun
             //                System.Diagnostics.Debug.Print(ex.Message);
             //            }
 
-            CompletionListReader.Read("resources/comp-func_prop-js.xml", BiliLists.PresetFuncAndProp);
-            CompletionListReader.Read("resources/comp-func_prop.xml", BiliLists.PresetFuncAndProp);
-            CompletionListReader.Read("resources/comp-keyword-js.xml", BiliLists.PresetKeyword);
-            InsightListReader.Read("resources/insight-js.xml", BiliLists.PresetInsight);
-            InsightListReader.Read("resources/insight.xml", BiliLists.PresetInsight);
-            SnippetListReader.Read("resources/snippet.xml", BiliLists.PresetSnippet);
+            CompletionListReader.Read("resources/comp-funcs_props-js.xml", BiliLists.PresetFuncAndProp);
+            CompletionListReader.Read("resources/comp-funcs_props.xml", BiliLists.PresetFuncAndProp);
+            InsightListReader.Read("resources/insights-js.xml", BiliLists.PresetInsight);
+            InsightListReader.Read("resources/insights.xml", BiliLists.PresetInsight);
+            CompletionListReader.Read("resources/comp-keywords-js.xml", BiliLists.PresetGlobalStatic);
+            CompletionListReader.Read("resources/comp-classes.xml", BiliLists.PresetGlobalStatic);
+            SnippetListReader.Read("resources/comp-snippets.xml", BiliLists.PresetGlobalStatic);
             // 开始首次合并
             ListImmigrator.Concat<CompletionList, CompletionData>(BiliLists.LocalFuncAndProp, BiliLists.PresetFuncAndProp, BiliLists.UserFuncAndProp);
             ListImmigrator.Concat<FunctionInsightList, FunctionInsightData>(BiliLists.LocalInsight, BiliLists.PresetInsight, BiliLists.UserInsight);
 
-            splashScreen.Close(TimeSpan.Zero);
-            splashScreen = null;
+            //splashScreen.Close(TimeSpan.Zero);
+            //splashScreen = null;
         }
-
-        //void editor_TextArea_Caret_PositionChanged(object sender, EventArgs e)
-        //{
-        //    ICSharpCode.AvalonEdit.Editing.Caret caret = editor.TextArea.Caret;
-        //    if (caret.Line != lastLine && insightWindow != null)
-        //    {
-        //        insightWindow.Close();
-        //    }
-        //    System.Diagnostics.Debug.Print("Last line: " + lastLine.ToString());
-        //    lastLine = caret.Line;
-        //}
 
         void editor_TextArea_TextEntered(object sender, TextCompositionEventArgs e)
         {
@@ -257,9 +245,7 @@ namespace DanmakuKun
                                         BiliLists.LocalFuncAndProp["$CommentData"],
                                         BiliLists.LocalFuncAndProp["$ITween"],
                                         BiliLists.LocalFuncAndProp["$Timer"],
-                                        BiliLists.LocalFuncAndProp["$String"],
-                                        BiliLists.PresetKeyword["Keyword"],
-                                        BiliLists.PresetSnippet["Snippet"]);
+                                        BiliLists.LocalFuncAndProp["$String"]);
                                     if (isGraphicsObject)
                                     {
                                         //Utils.OneListToAnother(BiliLists.PresetFuncAndProp["$Graphics"], data);
@@ -372,6 +358,38 @@ namespace DanmakuKun
                         completionWindow.CompletionList.RequestInsertion(e);
                     }
                 }
+            }
+        }
+
+        private void OnShowSenseListClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Show");
+        }
+
+        private void ShowSenseList_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = completionWindow == null;
+        }
+
+        private void ShowSenseList_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (completionWindow != null)
+            {
+                completionWindow.Close();
+            }
+            completionWindow = new CompletionWindow(editor.TextArea);
+            IList<ICompletionData> data = completionWindow.CompletionList.CompletionData;
+            Utils.CombineListsToOne(data, true,
+                                        BiliLists.PresetGlobalStatic[DV.KeywordListName],
+                                        BiliLists.PresetGlobalStatic[DV.SnippetListName],
+                                        BiliLists.PresetGlobalStatic[DV.ClassListName]);
+            completionWindow.Closed += (xs, xe) =>
+            {
+                completionWindow = null;
+            };
+            if (completionWindow != null)
+            {
+                completionWindow.Show();
             }
         }
 

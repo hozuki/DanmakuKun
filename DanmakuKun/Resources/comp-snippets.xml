@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<snippets version="1.0">
+  <!--请在名称后加入“{}”，否则容易与关键字形成重载。-->
+  <snippet name="ctor{}" d="Constructor">
+class ClassName
+{
+  function ClassName()
+  {
+    // TODO: Insert code here.
+  }
+}
+  </snippet>
+  <snippet name="try{}" d="TRY">
+try
+{
+  // TODO: Insert trial code here.
+}
+catch (ex)
+{
+  // TODO: Insert exception handling code here.
+}
+  </snippet>
+</snippets>

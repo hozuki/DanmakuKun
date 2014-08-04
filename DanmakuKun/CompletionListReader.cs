@@ -24,6 +24,7 @@ namespace DanmakuKun
                         listStatic = reader.GetAttribute("static");
                         if (!bool.Parse(listStatic))
                         {
+                            // 加入 $ 以表示这是一个成员列表
                             listName = "$" + listName;
                         }
                         reader.ReadStartElement("list");
@@ -36,7 +37,7 @@ namespace DanmakuKun
                             name = reader.GetAttribute("name");
                             type = reader.GetAttribute("type");
                             returnType = reader.GetAttribute("return");
-                            description = reader.GetAttribute("description");
+                            description = reader.GetAttribute("d");
                             source = reader.GetAttribute("source");
                             modifiers = reader.GetAttribute("modifiers");
                             mod = ItemModifiers.None;
@@ -54,6 +55,9 @@ namespace DanmakuKun
                                     break;
                                 case "keyword":
                                     data = new KeywordCompletionData(name, description, source);
+                                    break;
+                                case "class":
+                                    data = new ClassCompletionData(name, description);
                                     break;
                                 case "constant":
                                     data = new ConstantCompletionData(name, returnType, description, source);

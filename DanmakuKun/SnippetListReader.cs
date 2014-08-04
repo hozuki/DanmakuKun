@@ -9,8 +9,6 @@ namespace DanmakuKun
     public static class SnippetListReader
     {
 
-        private const string DefaultListName = "Snippet";
-
         public static void Read(string filename, IDictionary<string, CompletionList> dict)
         {
             using (var reader = new XmlTextReader(filename))
@@ -22,11 +20,11 @@ namespace DanmakuKun
                     string replacing;
                     SnippetCompletionData snippet;
                     CompletionList list;
-                    dict.TryGetValue(DefaultListName, out list);
+                    dict.TryGetValue(DV.SnippetListName, out list);
                     if (list == null)
                     {
                         list = new CompletionList();
-                        dict.Add(DefaultListName, list);
+                        dict.Add(DV.SnippetListName, list);
                     }
                     reader.ReadStartElement("snippets");
                     while (reader.IsStartElement("snippet"))
@@ -34,6 +32,7 @@ namespace DanmakuKun
                         name = reader.GetAttribute("name");
                         description = reader.GetAttribute("d");
                         replacing = reader.ReadElementString("snippet");
+                        replacing = replacing.Trim();
                         snippet = new SnippetCompletionData(name, description, replacing);
                         list.List.Add(snippet);
                     }

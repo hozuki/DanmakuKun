@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <completion-lists version="1.0">
   <list name="Math" static="true">
-    <item name="abs" type="function" return="Number" description="获取绝对值" />
-    <item name="acos" type="function" return="Number" description="反余弦" />
-    <item name="asin" type="function" return="Number" description="反正弦" />
-    <item name="atan" type="function" return="Number" description="反正切" />
-    <item name="atan2" type="function" return="Number" description="反正切" />
-    <item name="ceil" type="function" return="Number" description="返回上限整数" />
-    <item name="cos" type="function" return="Number" description="余弦" />
-    <item name="E" type="constant" return="Number" description="自然对数底数" />
-    <item name="exp" type="function" return="Number" description="以e为底的指数" />
-    <item name="floor" type="function" return="Number" description="返回下限整数" />
-    <item name="log" type="function" return="Number" description="自然对数" />
-    <item name="max" type="function" return="Number" description="返回最大值" />
-    <item name="min" type="function" return="Number" description="返回最大值" />
-    <item name="PI" type="constant" return="Number" description="π" />
-    <item name="pow" type="function" return="Number" description="计算幂函数" />
-    <item name="random" type="function" return="Number" description="返回伪随机数" />
-    <item name="round" type="function" return="Number" description="四舍五入取整" />
-    <item name="sin" type="function" return="Number" description="正弦" />
-    <item name="sqrt" type="function" return="Number" description="计算平方根" />
-    <item name="tan" type="function" return="Number" description="正切" />
+    <item name="abs" type="function" return="Number" d="获取绝对值" />
+    <item name="acos" type="function" return="Number" d="反余弦" />
+    <item name="asin" type="function" return="Number" d="反正弦" />
+    <item name="atan" type="function" return="Number" d="反正切" />
+    <item name="atan2" type="function" return="Number" d="反正切" />
+    <item name="ceil" type="function" return="Number" d="返回上限整数" />
+    <item name="cos" type="function" return="Number" d="余弦" />
+    <item name="E" type="constant" return="Number" d="自然对数底数" />
+    <item name="exp" type="function" return="Number" d="以e为底的指数" />
+    <item name="floor" type="function" return="Number" d="返回下限整数" />
+    <item name="log" type="function" return="Number" d="自然对数" />
+    <item name="max" type="function" return="Number" d="返回最大值" />
+    <item name="min" type="function" return="Number" d="返回最大值" />
+    <item name="PI" type="constant" return="Number" d="π" />
+    <item name="pow" type="function" return="Number" d="计算幂函数" />
+    <item name="random" type="function" return="Number" d="返回伪随机数" />
+    <item name="round" type="function" return="Number" d="四舍五入取整" />
+    <item name="sin" type="function" return="Number" d="正弦" />
+    <item name="sqrt" type="function" return="Number" d="计算平方根" />
+    <item name="tan" type="function" return="Number" d="正切" />
   </list>
   <list name="Graphics" static="false">
     <item name="beginFill" type="function" return="void" source="Graphics" />

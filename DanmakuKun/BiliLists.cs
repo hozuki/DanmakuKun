@@ -15,8 +15,10 @@ namespace DanmakuKun
         public readonly static IDictionary<string, FunctionInsightList> PresetInsight;
         public readonly static IDictionary<string, FunctionInsightList> UserInsight;
         public readonly static IDictionary<string, FunctionInsightList> LocalInsight;
-        public readonly static IDictionary<string, CompletionList> PresetKeyword;
-        public readonly static IDictionary<string, CompletionList> PresetSnippet;
+        /// <summary>
+        /// 存放各种全局静态不可修改表：Keywords, Snippets, Classes。
+        /// </summary>
+        public readonly static IDictionary<string, CompletionList> PresetGlobalStatic;
 
         private BiliLists()
         {
@@ -30,8 +32,7 @@ namespace DanmakuKun
             PresetInsight = new Dictionary<string, FunctionInsightList>();
             UserInsight = new Dictionary<string, FunctionInsightList>();
             LocalInsight = new Dictionary<string, FunctionInsightList>();
-            PresetKeyword = new Dictionary<string, CompletionList>();
-            PresetSnippet = new Dictionary<string, CompletionList>();
+            PresetGlobalStatic = new Dictionary<string, CompletionList>();
         }
 
         /// <summary>
