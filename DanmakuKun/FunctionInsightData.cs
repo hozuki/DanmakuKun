@@ -24,14 +24,15 @@ namespace DanmakuKun
         protected string _returnTypeName;
         protected string _returnDescription;
         protected string _remarks;
+        protected string _aliases;
         protected ItemModifiers _modifiers;
 
-        public FunctionInsightData(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
+        public FunctionInsightData(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, string aliases, IEnumerable<ArgumentInsightData> arguments)
         {
-            InitializeInternal(name, returnTypeName, source, description, modifiers, returnDescription, remarks, arguments);
+            InitializeInternal(name, returnTypeName, source, description, modifiers, returnDescription, remarks, aliases, arguments);
         }
 
-        private void InitializeInternal(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, IEnumerable<ArgumentInsightData> arguments)
+        private void InitializeInternal(string name, string returnTypeName, string source, string description, ItemModifiers modifiers, string returnDescription, string remarks, string aliases, IEnumerable<ArgumentInsightData> arguments)
         {
             _name = name;
             if (string.IsNullOrEmpty(_name))
@@ -63,6 +64,11 @@ namespace DanmakuKun
             if (_remarks == null)
             {
                 _remarks = string.Empty;
+            }
+            _aliases = aliases;
+            if (_aliases == null)
+            {
+                _aliases = string.Empty;
             }
             if (arguments != null && arguments.Count() > 0)
             {
@@ -112,6 +118,14 @@ namespace DanmakuKun
             get
             {
                 return _remarks;
+            }
+        }
+
+        public string Aliases
+        {
+            get
+            {
+                return _aliases;
             }
         }
 
@@ -201,6 +215,12 @@ namespace DanmakuKun
                 tb.Inlines.Add("\n\n");
                 tb.Inlines.Add(new Bold(new Run("说明")));
                 tb.Inlines.Add("\n" + _remarks);
+            }
+            if (!string.IsNullOrEmpty(_aliases))
+            {
+                tb.Inlines.Add("\n\n");
+                tb.Inlines.Add(new Bold(new Run("别名")));
+                tb.Inlines.Add("\n" + _aliases);
             }
             tb.TextWrapping = TextWrapping.Wrap;
             return tb;

@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ArgumentInsightData.cs" />
     <Compile Include="BiliLists.cs" />
     <Compile Include="ClassCompletionData.cs" />
@@ -89,17 +92,14 @@
     <Compile Include="PropertyCompletionData.cs" />
     <Compile Include="ItemModifiers.cs" />
     <Compile Include="RegexHelper.cs" />
-    <Compile Include="Samples\AvalonEdit\BraceFoldingStrategy.cs" />
-    <Compile Include="Samples\AvalonEdit\ColorizeAvalonEdit.cs" />
-    <Compile Include="Samples\AvalonEdit\ImageElementGenerator.cs" />
-    <Compile Include="Samples\AvalonEdit\MyCompletionData.cs" />
-    <Compile Include="Samples\AvalonEdit\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SnippetCompletionData.cs" />
     <Compile Include="SnippetListReader.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionCompletionData.cs" />
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,10 +112,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Samples\AvalonEdit\Window1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -142,7 +138,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Samples\AvalonEdit\CustomHighlighting.xshd" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Splash.png">
@@ -227,10 +222,8 @@
     </Content>
     <Content Include="Resources\comp-snippets.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Samples\AvalonEdit\article.html" />
-    <Content Include="Samples\AvalonEdit\document.html" />
-    <Content Include="Samples\AvalonEdit\rendering.html" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

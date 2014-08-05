@@ -4,9 +4,7 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\ICSha
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\ICSharpCode.AvalonEdit.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun.csprojResolveAssemblyReference.cache
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\MainWindow.baml
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\Samples\AvalonEdit\Window1.baml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\MainWindow.g.cs
-D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\Samples\AvalonEdit\Window1.g.cs
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\App.g.cs
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun_Content.g.cs
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\DanmakuKun_MarkupCompile.cache
@@ -43,3 +41,5 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resou
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-keywords-js.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-snippets.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-classes.xml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\AboutWindow.baml
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\AboutWindow.g.cs

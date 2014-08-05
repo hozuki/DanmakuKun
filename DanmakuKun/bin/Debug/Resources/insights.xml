@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <insight version="1.0">
+  <!-- Player -->
   <f name="Player.play" type="void" source="Player" d="开始播放媒体文件" modifiers="Static">
   </f>
   <f name="Player.pause" type="void" source="Player" d="暂停视频流的回放。如果视频已经暂停，则调用此方法将不会执行任何操作。要在暂时视频后恢复播放，请调用 play()。" modifiers="Static">
@@ -34,6 +35,7 @@ function keyCallback(key:int):void;">
     <a name="t" type="String" d="播放声音类型" />
     <a name="onLoad" type="Function" d="载入完成时的回调函数" default="null" />
   </f>
+  <!-- Math -->
   <f name="Math.abs" type="Number" source="Math" modifiers="Static" d="计算并返回由参数 val 指定的数字的绝对值。" return="指定参数的绝对值。">
     <a name="val" type="Number" d="要返回绝对值的数字。" />
   </f>
@@ -92,5 +94,84 @@ function keyCallback(key:int):void;">
   </f>
   <f name="Math.tan" type="Number" source="Math" modifiers="Static" d="计算并返回指定角度的正切值。要计算弧度，请参阅 Math 类的概述。" return="一个数字，它表示一个以弧度为单位的角度。">
     <a name="val" type="Number" d="参数 angleRadians 的正切值。" />
+  </f>
+  <!-- Utils -->
+  <f name="Utils.hue" type="int" source="Utils" modifiers="Static" d="将0-360的值映射到色相环上,例如
+0 -> 0x0000ff
+120 -> 0xff0000
+240 -> 0x00ff00" return="一个色彩代码">
+    <a name="v" type="int" d="一个整数" />
+  </f>
+  <f name="Utils.rgb" type="int" source="Utils" modifiers="Static" d="将RGB值映射到色彩值上" return="一个色彩代码">
+    <a name="r" type="int" d="一个整数 RED" />
+    <a name="g" type="int" d="一个整数 GREEN" />
+    <a name="b" type="int" d="一个整数 BLUE" />
+  </f>
+  <f name="Utils.formatTimes" type="String" source="Utils" modifiers="Static" d="格式化播放时间" return="格式化后的播放时间">
+    <a name="time" type="Number" d="以秒为单位的播放时间" />
+  </f>
+  <f name="Utils.delay" type="void" source="Utils" modifiers="Static" d="延迟执行函数" remarks="此函数不会因播放器暂停而终止执行" aliases="timer()">
+    <a name="f" type="Function" d="要延迟执行的函数" />
+    <a name="time" type="Number" d="以毫秒为单位的延迟时间" />
+  </f>
+  <f name="Utils.interval" type="void" source="Utils" modifiers="Static" d="定时执行函数" aliases="interval()">
+    <a name="f" type="Function" d="要定时执行的函数" />
+    <a name="time" type="Number" d="以毫秒为单位的定时时间" default="1000" />
+    <a name="times" type="uint" d="以次为单位的执行次数 0为无限次" default="1" />
+  </f>
+  <f name="Utils.distance" type="Number" source="Utils" modifiers="Static" d="计算坐标距离" return="以像素为单位的座标距离">
+    <a name="x1" type="Number" d="计算起始坐标X轴" />
+    <a name="y1" type="Number" d="计算起始坐标Y轴" />
+    <a name="x2" type="Number" d="计算结束坐标X轴" />
+    <a name="y2" type="Number" d="计算结束坐标Y轴" />
+  </f>
+  <f name="Utils.rand" type="Number" source="Utils" modifiers="Static" d="返回一个伪随机数 n，其中 min &lt;= n &gt; max。因为该计算不可避免地包含某些非随机的成分，所以返回的数字以保密方式计算且为“伪随机数”。" return="伪随机数 n，其中 min &lt;= n &gt; max">
+    <a name="min" type="Number" d="伪随机数最小值" />
+    <a name="max" type="Number" d="伪随机数最大值" />
+  </f>
+  <!-- Global -->
+  <f name="Global._set" type="void" source="Global" modifiers="Static" d="用于设置保存的变量值">
+    <a name="key" type="String" d="键值" />
+    <a name="val" type="*" d="保存的值" />
+  </f>
+  <f name="Global._get" type="*" source="Global" modifiers="Static" d="用于取出保存的键字" returns="保存的值" aliases="Global._">
+    <a name="key" type="String" d="键值" />
+  </f>
+  <f name="Global._" type="*" source="Global" modifiers="Static" d="用于取出保存的键字" returns="保存的值" aliases="Global._">
+    <a name="key" type="String" d="键值" />
+  </f>
+  <!-- ScriptManager -->
+  <f name="ScriptManager.clearTimer" type="void" source="ScriptManager" modifiers="Static" d="终止正在运行的所有定时器">
+  </f>
+  <f name="ScriptManager.ClearEl" type="void" source="ScriptManager" modifiers="Static" d="清除所有由高级弹幕创建的元件">
+  </f>
+  <f name="ScriptManager.clearTrigger" type="void" source="ScriptManager" modifiers="Static" d="清除所有由高级弹幕创建的触发器">
+  </f>
+  <!-- String -->
+  <f name="String.fromCharCode" type="String" source="String" modifiers="Static" d="从ASCII码转换为字符">
+    <a name="s" type="int" d="要转换的数值" />
+  </f>
+  <!-- Bitmap -->
+  <f name="Bitmap.createBitmapData" type="BitmapData" source="Bitmap (external)" modifiers="Static" d="创建一个具有指定的宽度和高度的 BitmapData 对象。如果为 fillColor 参数指定一个值，则位图中的每个像素都将设置为该颜色。
+默认情况下，将位图创建为透明位图，除非您为 transparent 参数传递值 false。创建了不透明位图后，将无法将其更改为透明位图。不透明位图中的每个像素仅使用 24 位的颜色通道信息。如果将位图定义为透明，则每个像素将使用 32 位的颜色通道信息，其中包括 Alpha 透明度通道。
+BitmapData 对象的最大宽度或高度为 8,191 像素，并且像素总数不能超过 16,777,215 像素。（因此，如果 BitmapData 对象的宽度为 8,191 像素，则其高度只能为 2,048 像素。）">
+    <a name="width" type="int" d="位图图像的宽度，以像素为单位。" />
+    <a name="height" type="int" d="位图图像的高度，以像素为单位。" />
+    <a name="transparent" type="Boolean" default="true" d="指定位图图像是否支持每个像素具有不同的透明度。默认值为 true（透明）。要创建完全透明的位图，请将 transparent 参数的值设置为 true，将 fillColor 参数的值设置为 0x00000000（或设置为 0）。将 transparent 属性设置为 false 可以略微提升呈现性能。" />
+    <a name="fillColor" type="uint" default="0xffffffff" d="用于填充位图图像区域的 32 位 ARGB 颜色值。默认值为 0xFFFFFFFF（纯白色）。" />
+  </f>
+  <f name="Bitmap.createRectangle" type="Rectangle" source="Bitmap (external)" modifiers="Static" d="创建一个新 Rectangle 对象，其左上角由 x 和 y 参数指定，并具有指定的 width 和 height 参数。如果调用此函数时不使用任何参数，将创建一个 x、y、width 和 height 属性均设置为 0 的矩形。">
+    <a name="x" type="Number" default="0" d="矩形左上角的 x 坐标。" />
+    <a name="y" type="Number" default="0" d="矩形左上角的 y 坐标。" />
+    <a name="width" type="Number" default="0" d="矩形的宽度（以像素为单位）" />
+    <a name="height" type="Number" default="0" d="矩形的高度（以像素为单位）。" />
+  </f>
+  <f name="Bitmap.createBitmap" type="CommentBitmap" source="Bitmap (external)" modifiers="Static" d="初始化 Bitmap 对象以引用指定的 BitmapData 对象。">
+    <a name="param" type="Object" d="包括以下参数。其他参数请详阅 Display#通用创建参数。" />
+    <a name="bitmapData" type="BitmapData" default="null" d="被引用的 BitmapData 对象。" hideInHeader="true" />
+    <a name="pixelSnapping" type="String" default="&quot;auto&quot;" d="Bitmap 对象是否贴紧至最近的像素。" hideInHeader="true" />
+    <a name="smoothing" type="Boolean" default="false" d="在缩放时是否对位图进行平滑处理。" hideInHeader="true" />
+    <a name="parent" type="Object" default="undefined" d="创建的 Bitmap 对象的父元件" hideInHeader="true" />
+    <a name="scale" type="Number" default="1" d="创建的 Bitmap 对象的缩放比例" hideInHeader="true" />
   </f>
 </insight>

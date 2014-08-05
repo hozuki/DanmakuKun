@@ -21,6 +21,7 @@ namespace DanmakuKun
                     string funcSource;
                     string funcReturnDescription;
                     string funcRemarks;
+                    string funcAliases;
                     string funcMod;
                     ItemModifiers funcMod_e;
                     string argName;
@@ -40,6 +41,7 @@ namespace DanmakuKun
                         funcSource = reader.GetAttribute("source");
                         funcReturnDescription = reader.GetAttribute("return");
                         funcRemarks = reader.GetAttribute("remarks");
+                        funcAliases = reader.GetAttribute("aliases");
                         funcMod = reader.GetAttribute("modifiers");
                         reader.ReadStartElement();
                         args.Clear();
@@ -64,7 +66,7 @@ namespace DanmakuKun
                         {
                             funcMod_e = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), funcMod);
                         }
-                        func = new FunctionInsightData(funcName, funcReturn, funcSource, funcDescription, funcMod_e, funcReturnDescription, funcRemarks, args);
+                        func = new FunctionInsightData(funcName, funcReturn, funcSource, funcDescription, funcMod_e, funcReturnDescription, funcRemarks, funcAliases, args);
                         FunctionInsightList list;
                         dict.TryGetValue(func.Name, out list);
                         if (list == null)

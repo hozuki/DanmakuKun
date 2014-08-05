@@ -12,5 +12,11 @@
     <item name="Tween" type="class" d="Tween class" />
     <item name="Bitmap" type="class" d="Bitmap class (load('bitmap') first)" />
     <item name="Storage" type="class" d="Storage class (load('storage') first" />
+    <item name="Boolean" type="class" d="Number class" />
+    <item name="Number" type="class" d="Number class" />
+    <item name="Object" type="class" d="Object class" />
+    <item name="Function" type="class" d="Function class" />
+    <item name="null" type="class" d="null type" />
+    <item name="undefined" type="class" d="undefined type" />
   </list>
 </completion-lists>

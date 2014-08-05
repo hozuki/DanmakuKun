@@ -4,36 +4,51 @@
 	xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
 	xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
 	TextOptions.TextFormattingMode="Display"
-	Title="Danmaku-kun" Height="300" Width="500"
+	Title="弹幕君 (Danmaku-kun)" Height="480" Width="600"
     Icon="Resources\Images\danmaku-kun.ico"
     WindowStartupLocation="CenterScreen"
     x:Name="DkMainWindow"
 	>
     <Window.Resources>
-        <ContextMenu x:Name="popupMenu" x:Key="popupMenu">
-            <MenuItem Header="剪切(_T)" Command="ApplicationCommands.Cut"/>
-            <MenuItem Header="复制(_C)" Command="ApplicationCommands.Copy"/>
-            <MenuItem Header="粘贴(_P)" Command="ApplicationCommands.Paste"/>
-            <MenuItem Header="删除(_D)" Command="ApplicationCommands.Delete"/>
-            <Separator/>
-            <MenuItem Header="撤销(_U)" Command="ApplicationCommands.Undo"/>
-            <MenuItem Header="重做(_R)" Command="ApplicationCommands.Redo"/>
-        </ContextMenu>
-        <RoutedUICommand x:Key="ShowSenseList" Text="Show _Sense List" />
+        <RoutedUICommand x:Key="ToolsShowSenserList" Text="显示 Senser 列表(_S)" />
+        <RoutedUICommand x:Key="FileNew" Text="新建(_N)" />
+        <RoutedUICommand x:Key="FileOpen" Text="打开(_O)..." />
+        <RoutedUICommand x:Key="FileSave" Text="保存(_S)" />
+        <RoutedUICommand x:Key="FileSaveAs" Text="另存为(_A)..." />
+        <RoutedUICommand x:Key="FileExit" Text="退出(_X)" />
+        <RoutedUICommand x:Key="ToolsFormatDocument" Text="设置文档缩进(_F)" />
+        <RoutedUICommand x:Key="ToolsToggleSenser" Text="愚者感知(_E)" />
+        <RoutedUICommand x:Key="ToolsScanSourceCode" Text="扫描源代码(_C)" />
     </Window.Resources>
     <Window.InputBindings>
-        <KeyBinding Gesture="Ctrl+J" Command="{StaticResource ShowSenseList}" />
+        <KeyBinding Gesture="Ctrl+J" Command="{StaticResource ToolsShowSenserList}" />
+        <KeyBinding Gesture="Ctrl+N" Command="{StaticResource FileNew}" />
+        <KeyBinding Gesture="Ctrl+O" Command="{StaticResource FileOpen}" />
+        <KeyBinding Gesture="Ctrl+S" Command="{StaticResource FileSave}" />
+        <KeyBinding Gesture="F12" Command="{StaticResource FileSaveAs}" />
+        <KeyBinding Gesture="Ctrl+K" Command="{StaticResource ToolsFormatDocument}" />
+        <!--<KeyBinding Gesture="Ctrl+I" Command="{StaticResource ToolsToggleSenser}" />-->
     </Window.InputBindings>
     <Window.CommandBindings>
-        <CommandBinding Command="{StaticResource ShowSenseList}" CanExecute="ShowSenseList_CanExecute" Executed="ShowSenseList_Executed" />
+        <CommandBinding Command="{StaticResource ToolsShowSenserList}" CanExecute="ToolsShowSenserList_CanExecute" Executed="ToolsShowSenserList_Executed" />
+        <CommandBinding Command="{StaticResource FileNew}" CanExecute="FileNew_CanExecute" Executed="FileNew_Executed" />
+        <CommandBinding Command="{StaticResource FileOpen}" CanExecute="FileOpen_CanExecute" Executed="FileOpen_Executed" />
+        <CommandBinding Command="{StaticResource FileSave}" CanExecute="FileSave_CanExecute" Executed="FileSave_Executed" />
+        <CommandBinding Command="{StaticResource FileSaveAs}" CanExecute="FileSaveAs_CanExecute" Executed="FileSaveAs_Executed" />
+        <CommandBinding Command="{StaticResource FileExit}" CanExecute="FileExit_CanExecute" Executed="FileExit_Executed" />
+        <CommandBinding Command="{StaticResource ToolsFormatDocument}" CanExecute="ToolsFormatDocument_CanExecute" Executed="ToolsFormatDocument_Executed" />
+       <!--<CommandBinding Command="{StaticResource ToolsToggleSenser}" CanExecute="ToolsToggleSenser_CanExecute" Executed="ToolsToggleSenser_Executed" />-->
+        <CommandBinding Command="{StaticResource ToolsScanSourceCode}" CanExecute="ToolsScanSourceCode_CanExecute" Executed="ToolsScanSourceCode_Executed" />
     </Window.CommandBindings>
     <DockPanel>
         <Menu x:Name="mainMenu" DockPanel.Dock="Top">
             <MenuItem x:Name="mnuFile" Header="文件(_F)">
-                <MenuItem Header="打开(_O)"/>
-                <MenuItem Header="保存(_S)"/>
+                <MenuItem Command="{StaticResource FileNew}" InputGestureText="Ctrl+N"/>
+                <MenuItem Command="{StaticResource FileOpen}" InputGestureText="Ctrl+O"/>
+                <MenuItem Command="{StaticResource FileSave}" InputGestureText="Ctrl+S"/>
+                <MenuItem Command="{StaticResource FileSaveAs}" InputGestureText="F12"/>
                 <Separator/>
-                <MenuItem Header="退出(_X)"/>
+                <MenuItem Command="{StaticResource FileExit}"/>
             </MenuItem>
             <MenuItem x:Name="mnuEdit" Header="编辑(_E)">
                 <MenuItem Header="剪切(_T)" Command="Cut"/>
@@ -50,18 +65,44 @@
                 <MenuItem Header="Show _Line Numbers" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=ShowLineNumbers}"/>
                 <MenuItem Header="Show _End of Line" IsCheckable="True" IsChecked="{Binding ElementName=textEditor,Path=Options.ShowEndOfLine}"/>
                 -->
-                <MenuItem Header="启用智能感知(_S)" IsCheckable="True" IsChecked="{Binding ElementName=DkMainWindow,Path=IntellisenseActivated}"/>
-                <MenuItem Command="{StaticResource ShowSenseList}" InputGestureText="Ctrl+J" />
+                <MenuItem Header="愚者感知(_E)" IsCheckable="True" IsChecked="{Binding ElementName=DkMainWindow, Path=SenserActive}"/>
+                <MenuItem Command="{StaticResource ToolsShowSenserList}" InputGestureText="Ctrl+J" />
+                <MenuItem Command="{StaticResource ToolsFormatDocument}" InputGestureText="Ctrl+K" />
+                <MenuItem Command="{StaticResource ToolsScanSourceCode}" />
+            </MenuItem>
+            <MenuItem Header="帮助(_H)">
+                <MenuItem Header="关于(_A)" Click="mnuHelpAbout_Click"/>
             </MenuItem>
         </Menu>
         <Grid>
-            <avalonEdit:TextEditor
-				Name="editor"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <avalonEdit:TextEditor
+				x:Name="editor"
 				FontFamily="Courier New"
 				FontSize="10pt"
-				SyntaxHighlighting="JavaScript" Grid.ColumnSpan="2"
-			>
-            </avalonEdit:TextEditor>
+				SyntaxHighlighting="JavaScript"
+                Grid.Column="0" Grid.Row="0"
+			    />
+                <GridSplitter Width="5"/>
+                <TreeView Grid.Column="1" Grid.Row="0">
+                    <TreeViewItem Header="Root" IsExpanded="True">
+                        <TreeViewItem x:Name="tviFunctions" Header="Functions"/>
+                        <TreeViewItem x:Name="tviVariables" Header="Declarations"/>
+                    </TreeViewItem>
+                </TreeView>
+            </Grid>
+            <StatusBar HorizontalAlignment="Stretch" Grid.Row="1">
+                <StatusBarItem x:Name="sbiStatus" Content="Danmaku-kun" HorizontalAlignment="Stretch"/>
+                <StatusBarItem x:Name="sbiCaretPosition" Width="40" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
+            </StatusBar>
         </Grid>
     </DockPanel>
 </Window>

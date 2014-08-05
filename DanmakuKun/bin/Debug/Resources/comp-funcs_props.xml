@@ -54,7 +54,7 @@
 	</list>
 	<list name="ScriptManager" static="true">
 		<item name="clearTimer" type="function" return="void" d="中止所有计时器" />
-		<item name="clearEI" type="function" return="void" d="清除所有高级弹幕创建的元件" />
+		<item name="clearEl" type="function" return="void" d="清除所有高级弹幕创建的元件" />
 		<item name="clearTrigger" type="function" return="void" d="清除所有高级弹幕创建的触发器" />
 	</list>
 	<list name="String" static="true">

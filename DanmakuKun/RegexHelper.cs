@@ -52,11 +52,13 @@ namespace DanmakuKun
         // 上面的限制于2014.08.02取消
         //public const string LeveledIdentifierAndArrayPatternRTL = @"(?:[\s]+|^)(?:([a-zA-Z_][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)*$";
         //public const string LeveledIdentifierAndArrayPatternRTL = @"(?:[^\$]|^)(?:([a-zA-Z_][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)*$";
-        public const string DollarOrLeveledIdentifierAndArrayPatternRTL = @"(?:[^$_]|^)(?:([a-zA-Z_$][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)*$";
+        public const string DollarOrLeveledIdentifierAndArrayPatternRTL = @"(?:[^$_]|^)(?:([a-zA-Z_$][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)(?:\.[\s]*([a-zA-Z_$][\w]*)[\s]*(?:\[[^\[\]]*(((?'open'\[)[^\[\]]*)+((?'-open'\])[^\[\]]*)+)*(?(open)(?!))\][\s]*)*)*$";
         public static readonly Regex DollarOrLeveledIdentifierAndArrayRegexRTL;
 
-        public const string FunctionCallIdentifierPatternRTL = @"(?:^|\b|[^\w\$]?)(?:(?:\$[G]?|[a-zA-Z_][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_][\w]*)[\s]*)*$";
+        public const string FunctionCallIdentifierPatternRTL = @"(?:^|\b|[^\w_$]?)(?:(?:[a-zA-Z_$][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_$][\w]*)[\s]*)*$";
         public static readonly Regex FunctionCallIdentifierRegexRTL;
+        public const string FunctionDefinitionIdentifierPatternRTL = @"(?:^|\b|[^\w_$]?)function[\s][\s]*(?:(?:[a-zA-Z_$][\w]*)[\s]*)(?:\.[\s]*([a-zA-Z_$][\w]*)[\s]*)*$";
+        public static readonly Regex FunctionDefinitionIdentifierRegexRTL;
         public const string GraphicsFunctionCallPattern = @"[\s\S]*\.graphics\.([^\.][^\.]*)$";
         public static readonly Regex GraphicsFunctionCallRegex;
 
@@ -75,6 +77,7 @@ namespace DanmakuKun
             DollarOrLeveledIdentifierRegexRTL = new Regex(DollarOrLeveledIdentifierPatternRTL, RegexOptions.Compiled | RegexOptions.RightToLeft);
             DollarOrLeveledIdentifierAndArrayRegexRTL = new Regex(DollarOrLeveledIdentifierAndArrayPatternRTL, RegexOptions.Compiled | RegexOptions.RightToLeft);
             FunctionCallIdentifierRegexRTL = new Regex(FunctionCallIdentifierPatternRTL, RegexOptions.Compiled | RegexOptions.RightToLeft);
+            FunctionDefinitionIdentifierRegexRTL = new Regex(FunctionDefinitionIdentifierPatternRTL, RegexOptions.Compiled | RegexOptions.RightToLeft);
             GraphicsFunctionCallRegex = new Regex(GraphicsFunctionCallPattern, RegexOptions.Compiled);
         }
 
@@ -96,6 +99,7 @@ namespace DanmakuKun
             DollarOrLeveledIdentifierRegexRTL.Match(string.Empty);
             DollarOrLeveledIdentifierAndArrayRegexRTL.Match(string.Empty);
             FunctionCallIdentifierRegexRTL.Match(string.Empty);
+            FunctionDefinitionIdentifierRegexRTL.Match(string.Empty);
             GraphicsFunctionCallRegex.Match(string.Empty);
         }
 

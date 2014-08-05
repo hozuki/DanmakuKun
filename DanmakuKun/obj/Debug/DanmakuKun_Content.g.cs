@@ -34,8 +34,5 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/insights.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-keywords-js.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-snippets.xml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/article.html")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/document.html")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("samples/avalonedit/rendering.html")]
 
 
