@@ -70,6 +70,7 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ArgumentInsightData.cs" />
+    <Compile Include="AstHelper.cs" />
     <Compile Include="BiliLists.cs" />
     <Compile Include="ClassCompletionData.cs" />
     <Compile Include="CompletionDataComparer.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="FunctionInsightList.cs" />
     <Compile Include="FunctionOverloadProvider.cs" />
     <Compile Include="InsightListReader.cs" />
+    <Compile Include="IWithTypeObject.cs" />
+    <Compile Include="ObjectFieldCompletionData.cs" />
     <Compile Include="ObjectList.cs" />
     <Compile Include="IWithSourceObject.cs" />
     <Compile Include="JScript.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="SnippetListReader.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionCompletionData.cs" />
+    <Compile Include="WindowExtension.cs" />
     <Page Include="AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +147,9 @@
     <Resource Include="Resources\Images\Splash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Resources\comp-objfields.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\comp-classes.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -215,6 +222,7 @@
     </Content>
     <Content Include="Resources\insights.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\comp-keywords-js.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -14,9 +14,9 @@ namespace DanmakuKun
         }
 
         public const string IdentifierPattern = @"\b[a-zA-Z_][\w]*[\s]*\b";
-        public const string IdentifierPatternRTL = @"\b[a-zA-Z_][\w]*[\s]*\$";
+        public const string IdentifierPatternRTL = @"\b[a-zA-Z_][\w]*[\s]*$";
         public const string IdentifierNullablePattern = @"\b([a-zA-Z_][\w]*)?[\s]*\b";
-        public const string IdentifierNullablePatternRTL = @"\b([a-zA-Z_][\w]*)?[\s]*$";
+        public const string IdentifierNullablePatternRTL = @"\b([a-zA-Z_$][\w]*)?[\s]*$";
         public static readonly Regex IdentifierRegex;
         public static readonly Regex IdentifierRegexRTL;
         public const string StringPattern = @"""[\s\S]*""[\s]*";

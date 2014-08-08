@@ -8,51 +8,51 @@ using System.Windows.Documents;
 
 namespace DanmakuKun
 {
-    public class FunctionCompletionData : CompletionData
+    public class FunctionCompletionData : CompletionData, IWithTypeObject
     {
 
-        protected string _returnTypeName;
+        protected string _typeName;
 
-        public FunctionCompletionData(string name, string returnTypeName)
-            : this(name, returnTypeName, null)
+        public FunctionCompletionData(string name, string typeName)
+            : this(name, typeName, null)
         {
         }
 
-        public FunctionCompletionData(string name, string returnTypeName, string description)
-            : this(name, returnTypeName, description, null)
+        public FunctionCompletionData(string name, string typeName, string description)
+            : this(name, typeName, description, null)
         {
         }
 
-        public FunctionCompletionData(string name, string returnTypeName, string description, ItemModifiers modifiers)
-            : this(name, returnTypeName, description, null, modifiers)
+        public FunctionCompletionData(string name, string typeName, string description, ItemModifiers modifiers)
+            : this(name, typeName, description, null, modifiers)
         {
         }
 
-        public FunctionCompletionData(string name, string returnTypeName, string description, string source)
-            : this(name, returnTypeName, description, source, ItemModifiers.None)
+        public FunctionCompletionData(string name, string typeName, string description, string source)
+            : this(name, typeName, description, source, ItemModifiers.None)
         {
         }
 
-        public FunctionCompletionData(string name, string returnTypeName, string description, string source, ItemModifiers modifiers)
-            : this(name, returnTypeName, description, source, modifiers, name)
+        public FunctionCompletionData(string name, string typeName, string description, string source, ItemModifiers modifiers)
+            : this(name, typeName, description, source, modifiers, name)
         {
         }
 
-        public FunctionCompletionData(string name, string returnTypeName, string description, string source, ItemModifiers modifiers, string replacing)
+        public FunctionCompletionData(string name, string typeName, string description, string source, ItemModifiers modifiers, string replacing)
             : base(name, description, source, modifiers, replacing)
         {
-            _returnTypeName = returnTypeName;
-            if (string.IsNullOrEmpty(_returnTypeName))
+            _typeName = typeName;
+            if (string.IsNullOrEmpty(_typeName))
             {
-                _returnTypeName = DV.DefaultTypeName;
+                _typeName = DV.DefaultTypeName;
             }
         }
 
-        public virtual string ReturnTypeName
+        public virtual string TypeName
         {
             get
             {
-                return _returnTypeName;
+                return _typeName;
             }
         }
 
@@ -60,7 +60,7 @@ namespace DanmakuKun
         {
             get
             {
-                return _text + " : " + _returnTypeName;
+                return _text + " : " + _typeName;
             }
         }
 
@@ -78,7 +78,7 @@ namespace DanmakuKun
             {
                 TextBlock txt = new TextBlock();
                 txt.Inlines.Add(_text + " : ");
-                txt.Inlines.Add(new Bold(new Run(_returnTypeName)));
+                txt.Inlines.Add(new Bold(new Run(_typeName)));
                 return txt;
             }
         }

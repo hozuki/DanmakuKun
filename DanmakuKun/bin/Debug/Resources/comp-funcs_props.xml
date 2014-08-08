@@ -16,9 +16,9 @@
 		<item name="fullScreenWidth" type="property" return="uint" d="全屏显示器宽度(只读)" modifiers="ReadOnly" />
 		<item name="height" type="property" return="Number" d="对象高度(只读)" modifiers="ReadOnly" />
 		<item name="width" type="property" return="Number" description="对象宽度(只读)" modifiers="ReadOnly" />
-		<item name="toIntVector" type="function" return="Vector.&lt;int&gt;" d="将数组转换为 Vector.&lt;int&gt;" />
-		<item name="toUIntVector" type="function" return="Vector.&lt;uint&gt;" d="将数组转换为 Vector.&lt;uint&gt;" />
-		<item name="toNumberVector" type="function" return="Vector.&lt;Number&gt;" d="将数组转换为 Vector.&lt;Number&gt;" />
+		<item name="toIntVector" type="function" return="Vector&lt;int&gt;" d="将数组转换为 Vector&lt;int&gt;" />
+		<item name="toUIntVector" type="function" return="Vector&lt;uint&gt;" d="将数组转换为 Vector&lt;uint&gt;" />
+		<item name="toNumberVector" type="function" return="Vector&lt;Number&gt;" d="将数组转换为 Vector&lt;Number&gt;" />
 	</list>
 	<list name="Utils" static="true">
 		<item name="delay" type="function" return="void" d="延迟执行" />
@@ -30,7 +30,7 @@
 		<item name="rgb" type="function" return="int" d="映射色彩值" />
 	</list>
 	<list name="Player" static="true">
-		<item name="commentList" type="property" return="Array.&lt;CommentData&gt;" d="获取当前弹幕列表" />
+		<item name="commentList" type="property" return="Array&lt;CommentData&gt;" d="获取当前弹幕列表" />
 		<item name="commentTrigger" type="function" return="uint" d="监听发送弹幕" />
 		<item name="createSound" type="function" return="ScriptSound" d="建立声音元件" />
 		<item name="height" type="property" return="int" d="播放器高度(只读)" modifiers="ReadOnly" />

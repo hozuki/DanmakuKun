@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-objfields.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-classes.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-funcs_props-js.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/comp-funcs_props.xml")]

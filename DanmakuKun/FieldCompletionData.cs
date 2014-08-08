@@ -8,7 +8,7 @@ using System.Windows.Documents;
 
 namespace DanmakuKun
 {
-    public class FieldCompletionData : CompletionData
+    public class FieldCompletionData : CompletionData, IWithTypeObject
     {
 
         string _typeName;

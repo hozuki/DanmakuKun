@@ -15,7 +15,7 @@ namespace DanmakuKun
         protected string _typeName;
         protected string _defaultValue;
         protected string _description;
-        protected bool _hideInHeader;
+        protected ItemModifiers _modifiers;
 
         public ArgumentInsightData(string name, string typeName)
             : this(name, typeName, string.Empty)
@@ -23,16 +23,16 @@ namespace DanmakuKun
         }
 
         public ArgumentInsightData(string name, string typeName, string defaultValue)
-            : this(name, typeName, false, defaultValue)
+            : this(name, typeName, DV.DefaultModifiers, defaultValue)
         {
         }
 
-        public ArgumentInsightData(string name, string typeName, bool hideInHeader, string defaultValue)
-            : this(name, typeName, hideInHeader, defaultValue, string.Empty)
+        public ArgumentInsightData(string name, string typeName, ItemModifiers modifiers, string defaultValue)
+            : this(name, typeName, modifiers, defaultValue, string.Empty)
         {
         }
 
-        public ArgumentInsightData(string name, string typeName, bool hideInHeader, string defaultValue, string description)
+        public ArgumentInsightData(string name, string typeName, ItemModifiers modifiers, string defaultValue, string description)
         {
             _name = name;
             if (string.IsNullOrEmpty(_name))
@@ -45,7 +45,7 @@ namespace DanmakuKun
                 _typeName = DefaultType;
             }
             _defaultValue = defaultValue;
-            _hideInHeader = hideInHeader;
+            _modifiers = modifiers;
             if (_defaultValue == null)
             {
                 _defaultValue = string.Empty;
@@ -89,11 +89,11 @@ namespace DanmakuKun
             }
         }
 
-        public bool HideInHeader
+        public ItemModifiers Modifiers
         {
             get
             {
-                return _hideInHeader;
+                return _modifiers;
             }
         }
 

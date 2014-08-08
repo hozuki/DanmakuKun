@@ -157,7 +157,7 @@ namespace DanmakuKun
             IList<ArgumentInsightData> visibleArgs = new List<ArgumentInsightData>();
             foreach (var arg in _arguments)
             {
-                if (!arg.HideInHeader)
+                if ((arg.Modifiers & ItemModifiers.Hidden) == 0)
                 {
                     visibleArgs.Add(arg);
                 }
@@ -165,8 +165,16 @@ namespace DanmakuKun
             int len = visibleArgs.Count;
             for (var i = 0; i < len; i++)
             {
+                if ((visibleArgs[i].Modifiers & ItemModifiers.Optional) != 0)
+                {
+                    tb.Inlines.Add("[");
+                }
                 tb.Inlines.Add(new Bold(new Run(visibleArgs[i].Name)));
                 tb.Inlines.Add(" : " + visibleArgs[i].GetTypeAndDefaultValue());
+                if ((visibleArgs[i].Modifiers & ItemModifiers.Optional) != 0)
+                {
+                    tb.Inlines.Add("]");
+                }
                 if (i < len - 1)
                 {
                     tb.Inlines.Add(", ");
@@ -187,6 +195,7 @@ namespace DanmakuKun
             {
                 tb.Inlines.Add(" [静态]");
             }
+            tb.TextWrapping = TextWrapping.Wrap;
             return tb;
         }
 

@@ -41,6 +41,7 @@ namespace DanmakuKun
             set
             {
                 SetValue(SenserActivatedProperty, value);
+                mnuToolsToggleSenser.IsChecked = value;
             }
         }
 
@@ -68,24 +69,90 @@ namespace DanmakuKun
             this.Closing += MainWindow_Closing;
             editor.TextArea.TextEntered += editor_TextArea_TextEntered;
             editor.TextArea.TextEntering += editor_TextArea_TextEntering;
-            editor.MouseRightButtonUp += editor_MouseRightButtonUp;
             editor.TextArea.Caret.PositionChanged += editor_Caret_PositionChanged;
+            editor.PreviewKeyDown += editor_KeyDown;
+            editor.MouseRightButtonUp += editor_MouseRightButtonUp;
         }
 
         private void PrivateInitialize()
         {
             sbiCaretPosition.Content = editor.TextArea.Caret.Location;
+            editor.ShowLineNumbers = true;
+        }
+
+        private void Command_NewFile()
+        {
+            editor.Document = null;
+            editor.Document = new ICSharpCode.AvalonEdit.Document.TextDocument();
+        }
+
+        private void Command_OpenFile()
+        {
+            using (System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog())
+            {
+                dialog.AddExtension = true;
+                dialog.DefaultExt = ".js";
+                dialog.DereferenceLinks = true;
+                dialog.Filter = "ECMA-262 常见脚本 (*.js;*.as;*.mx)|*.js;*.as;*.mx|JavaScript 脚本 (*.js)|*.js|ActionScript 脚本 (*.as;*.mx)|*.as;*.mx|所有文件 (*)|*";
+                dialog.FilterIndex = 0;
+                dialog.SupportMultiDottedExtensions = true;
+                dialog.ValidateNames = true;
+                dialog.Multiselect = false;
+                dialog.ShowReadOnly = false;
+                dialog.CheckFileExists = true;
+                if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    if (!string.IsNullOrEmpty(dialog.FileName))
+                    {
+                        editor.Load(dialog.FileName);
+                    }
+                }
+            }
+        }
+
+        private void Command_SaveFileAs()
+        {
+            using (System.Windows.Forms.SaveFileDialog dialog = new System.Windows.Forms.SaveFileDialog())
+            {
+                dialog.AddExtension = true;
+                dialog.DefaultExt = ".js";
+                dialog.DereferenceLinks = true;
+                dialog.Filter = "ECMA-262 常见脚本 (*.js;*.as;*.mx)|*.js;*.as;*.mx|JavaScript 脚本 (*.js)|*.js|ActionScript 脚本 (*.as;*.mx)|*.as;*.mx|所有文件 (*)|*";
+                dialog.FilterIndex = 0;
+                dialog.SupportMultiDottedExtensions = true;
+                dialog.ValidateNames = true;
+                dialog.OverwritePrompt = true;
+                if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+                {
+                    if (!string.IsNullOrEmpty(dialog.FileName))
+                    {
+                        editor.Save(dialog.FileName);
+                    }
+                }
+            }
         }
 
         void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!editor.Document.UndoStack.IsOriginalFile)
             {
-                MessageBoxResult result;
-                result = MessageBox.Show("文档已修改，确认关闭吗？", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.No)
+                MessageBoxResult result = MessageBoxResult.Cancel;
+                result = MessageBox.Show("文档已修改，是否保存？", string.Empty, MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                switch (result)
                 {
-                    e.Cancel = true;
+                    case MessageBoxResult.Yes:
+                        mnuFileSave.Command.Execute(null);
+                        if (!editor.Document.UndoStack.IsOriginalFile)
+                        {
+                            // 如果用户最终取消了保存，那么就还是不关闭窗口
+                            e.Cancel = true;
+                        }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
                 }
             }
         }
@@ -125,6 +192,7 @@ namespace DanmakuKun
             InsightListReader.Read("resources/insights-js.xml", BiliLists.PresetInsight);
             InsightListReader.Read("resources/insights.xml", BiliLists.PresetInsight);
             CompletionListReader.Read("resources/comp-keywords-js.xml", BiliLists.PresetGlobalStatic);
+            CompletionListReader.Read("resources/comp-objfields.xml", BiliLists.PresetGlobalStatic);
             CompletionListReader.Read("resources/comp-classes.xml", BiliLists.PresetGlobalStatic);
             SnippetListReader.Read("resources/comp-snippets.xml", BiliLists.PresetGlobalStatic);
             // 开始首次合并
@@ -330,7 +398,7 @@ namespace DanmakuKun
 
                                     if (!string.IsNullOrEmpty(functionName))
                                     {
-                                        ItemModifiers functionFilter = ItemModifiers.None;
+                                        ItemModifiers functionFilter = DV.DefaultModifiers;
                                         if (functionName.StartsWith("$."))
                                         {
                                             functionName = "Display." + (functionName.Length > 2 ? functionName.Substring(2, functionName.Length - 2) : string.Empty);
@@ -387,6 +455,23 @@ namespace DanmakuKun
                             }
                             break;
                         }
+                    case "@":
+                        {
+                            if (completionWindow != null)
+                            {
+                                completionWindow.Close();
+                            }
+                            completionWindow = new CompletionWindow(editor.TextArea);
+                            completionWindow.Closed += (xs, xe) =>
+                            {
+                                completionWindow = null;
+                            };
+                            // 这里的替换很特殊，没有修改 completionWindow.StartOffset，而是由 ObjectFieldCompletionData 重写了 Complete() 函数
+                            Utils.CombineListsToOne(completionWindow.CompletionList.CompletionData, true,
+                                BiliLists.PresetGlobalStatic[DV.ObjectFieldListName]);
+                            completionWindow.Show();
+                            break;
+                        }
                     case "{":
                     case "}":
                     case ";":
@@ -415,6 +500,41 @@ namespace DanmakuKun
                         // Whenever a non-letter is typed while the completion window is open,
                         // insert the currently selected element.
                         completionWindow.CompletionList.RequestInsertion(e);
+                        return;
+                    }
+                }
+            }
+        }
+
+        void editor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (SenserActive)
+            {
+                if (e.Key == Key.Tab && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+                {
+                    var match = RegexHelper.IdentifierRegexRTL.Match(editor.Text, 0, editor.CaretOffset);
+                    if (match.Success)
+                    {
+                        var probableSnippetName = match.Value;
+                        var list = BiliLists.PresetGlobalStatic[DV.SnippetListName];
+                        foreach (var item in list)
+                        {
+                            if (item.Text.Length > 2)
+                            {
+                                if (item.Text.Substring(0, item.Text.Length - 2) == probableSnippetName)
+                                {
+                                    var tempCWindow = new CompletionWindow(editor.TextArea);
+                                    tempCWindow.StartOffset -= probableSnippetName.Length;
+                                    tempCWindow.CompletionList.CompletionData.Add(item);
+                                    tempCWindow.CompletionList.ListBox.SelectedIndex = 0;
+                                    tempCWindow.CompletionList.RequestInsertion(e);
+                                    tempCWindow = null;
+                                    e.Handled = true;
+                                    break;
+                                }
+                            }
+                        }
+                        return;
                     }
                 }
             }
@@ -459,17 +579,25 @@ namespace DanmakuKun
 
         private void FileNew_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            bool createNew = true;
+            MessageBoxResult result = MessageBoxResult.No;
             if (!editor.Document.UndoStack.IsOriginalFile)
             {
-                MessageBoxResult result;
-                result = MessageBox.Show("文档已经修改，确定新建吗？", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-                createNew = result == MessageBoxResult.Yes;
+                result = MessageBox.Show("文档已经修改，是否保存？", string.Empty, MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
             }
-            if (createNew)
+            switch (result)
             {
-                editor.Document = null;
-                editor.Document = new ICSharpCode.AvalonEdit.Document.TextDocument();
+                case MessageBoxResult.Yes:
+                    mnuFileSave.Command.Execute(null);
+                    if (editor.Document.UndoStack.IsOriginalFile)
+                    {
+                        Command_NewFile();
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    Command_NewFile();
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
             }
         }
 
@@ -480,49 +608,53 @@ namespace DanmakuKun
 
         private void FileOpen_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            bool selectFile = true;
+            MessageBoxResult result = MessageBoxResult.No;
             if (!editor.Document.UndoStack.IsOriginalFile)
             {
-                MessageBoxResult result;
-                result = MessageBox.Show("文档已经修改，确定打开另外的文件吗？", string.Empty, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-                selectFile = result == MessageBoxResult.Yes;
+                result = MessageBox.Show("文档已经修改，是否保存？", string.Empty, MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
             }
-            if (selectFile)
+            switch (result)
             {
-                using (System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog())
-                {
-                    dialog.Filter = "JavaScript 源代码 (*.js)|*.js";
-                    dialog.SupportMultiDottedExtensions = true;
-                    dialog.ValidateNames = true;
-                    dialog.Multiselect = false;
-                    dialog.ShowReadOnly = false;
-                    dialog.CheckFileExists = true;
-                    dialog.ShowDialog();
-                    if (!string.IsNullOrEmpty(dialog.FileName))
+                case MessageBoxResult.Yes:
+                    mnuFileSave.Command.Execute(null);
+                    if (editor.Document.UndoStack.IsOriginalFile)
                     {
-                        editor.Load(dialog.FileName);
+                        Command_OpenFile();
                     }
-                }
+                    break;
+                case MessageBoxResult.No:
+                    Command_OpenFile();
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
             }
         }
 
         private void FileSave_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = false;
+            e.CanExecute = !editor.Document.UndoStack.IsOriginalFile;
         }
 
         private void FileSave_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            if (!System.IO.File.Exists(editor.Document.FileName))
+            {
+                Command_SaveFileAs();
+            }
+            else
+            {
+                editor.Save(editor.Document.FileName);
+            }
         }
 
         private void FileSaveAs_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            //e.CanExecute = !editor.Document.UndoStack.IsOriginalFile;
-            e.CanExecute = false;
+            e.CanExecute = true;
         }
 
         private void FileSaveAs_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            Command_SaveFileAs();
         }
 
         private void FileExit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -563,7 +695,6 @@ namespace DanmakuKun
         private void ToolsToggleSenser_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.SenserActive = !this.SenserActive;
-            e.Handled = true;
         }
 
         private void ToolsScanSourceCode_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -575,72 +706,41 @@ namespace DanmakuKun
         {
             JavaScriptParser parser = new JavaScriptParser();
             Program program;
+            sbiStatus.Content = "Scanning...";
             tviDeclarations.Items.Clear();
-            tviFunctions.Items.Clear();
-            try
+            tviAst.Items.Clear();
+            //try
             {
                 program = parser.Parse(editor.Text);
                 foreach (var func in program.FunctionDeclarations)
                 {
-                    ProcessFunctionDeclarations(func, tviFunctions);
+                    AstHelper.ProcessFunctionDeclarations(func, tviDeclarations, editor);
                 }
+                foreach (var vd in program.VariableDeclarations)
+                {
+                    AstHelper.ProcessVariableDeclarations(vd, tviDeclarations, editor);
+                }
+                // Abstract Syntax Tree
+                // Not fully implemented yet
+                AstHelper.AstProcessProgram(program, tviAst, editor);
             }
-            catch (Exception ex)
-            {
-                sbiStatus.Content = ex.Message;
-            }
-            finally
-            {
-                program = null;
-                parser = null;
-            }
+            //catch (Exception ex)
+            //{
+            //    sbiStatus.Content = ex.Message;
+            //}
+            //finally
+            //{
+            //    program = null;
+            //    parser = null;
+            //}
+            sbiStatus.Content = string.Empty;
         }
 
         private void mnuHelpAbout_Click(object sender, RoutedEventArgs e)
         {
             AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.ShowDialog();
+            aboutWindow.ShowDialog(this);
             aboutWindow = null;
-        }
-
-        private void ProcessFunctionDeclarations(IFunctionDeclaration func, TreeViewItem tvi)
-        {
-            if (func != null)
-            {
-                var t = new TreeViewItem();
-                t.Header = GetFuncStringExpression(func);
-                t.ToolTip = func.Body.LabelSet;
-                tvi.Items.Add(t);
-                foreach (var f in func.FunctionDeclarations)
-                {
-                    ProcessFunctionDeclarations(f, t);
-                }
-            }
-        }
-
-        private string GetFuncStringExpression(IFunctionDeclaration func)
-        {
-            if (func != null)
-            {
-                string ret = "function " + func.Id.Name + "(";
-                var len = func.Parameters.Count();
-                int i = 0;
-                foreach (var param in func.Parameters)
-                {
-                    ret += param.Name;
-                    if (i < len - 1)
-                    {
-                        ret += ", ";
-                    }
-                    i++;
-                }
-                ret += ")";
-                return ret;
-            }
-            else
-            {
-                return string.Empty;
-            }
         }
 
     }

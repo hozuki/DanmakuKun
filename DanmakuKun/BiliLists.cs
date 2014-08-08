@@ -16,7 +16,7 @@ namespace DanmakuKun
         public readonly static IDictionary<string, FunctionInsightList> UserInsight;
         public readonly static IDictionary<string, FunctionInsightList> LocalInsight;
         /// <summary>
-        /// 存放各种全局静态不可修改表：Keywords, Snippets, Classes。
+        /// 存放各种全局静态不可修改表：Keywords, Snippets, Classes, @ObjectFields。
         /// </summary>
         public readonly static IDictionary<string, CompletionList> PresetGlobalStatic;
 

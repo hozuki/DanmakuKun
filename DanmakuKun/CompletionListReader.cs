@@ -22,7 +22,8 @@ namespace DanmakuKun
                     {
                         listName = reader.GetAttribute("name");
                         listStatic = reader.GetAttribute("static");
-                        if (!bool.Parse(listStatic))
+                        // 默认是动态的，如果不加 static 标签指明的话
+                        if (string.IsNullOrEmpty(listStatic) || !bool.Parse(listStatic))
                         {
                             // 加入 $ 以表示这是一个成员列表
                             listName = "$" + listName;
@@ -40,10 +41,10 @@ namespace DanmakuKun
                             description = reader.GetAttribute("d");
                             source = reader.GetAttribute("source");
                             modifiers = reader.GetAttribute("modifiers");
-                            mod = ItemModifiers.None;
+                            mod = DV.DefaultModifiers;
                             if (!string.IsNullOrEmpty(modifiers))
                             {
-                                mod = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), modifiers);
+                                mod = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), modifiers, true);
                             }
                             switch (type)
                             {
@@ -64,6 +65,9 @@ namespace DanmakuKun
                                     break;
                                 case "field":
                                     data = new FieldCompletionData(name, returnType, description, source, mod);
+                                    break;
+                                case "objfield":
+                                    data = new ObjectFieldCompletionData(name, returnType, description, source, mod);
                                     break;
                                 default:
                                     break;

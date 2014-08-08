@@ -28,8 +28,8 @@ namespace DanmakuKun
                     string argType;
                     string argDefaultValue;
                     string argDescription;
-                    string argHideInHeader;
-                    bool argHideInHeader_b;
+                    string argModifiers;
+                    ItemModifiers argModifiers_b;
                     IList<ArgumentInsightData> args = new List<ArgumentInsightData>();
                     FunctionInsightData func;
                     reader.ReadStartElement("insight");
@@ -50,21 +50,21 @@ namespace DanmakuKun
                             argName = reader.GetAttribute("name");
                             argType = reader.GetAttribute("type");
                             argDefaultValue = reader.GetAttribute("default");
-                            argHideInHeader = reader.GetAttribute("hideInHeader");
-                            argHideInHeader_b = false;
+                            argModifiers = reader.GetAttribute("modifiers");
+                            argModifiers_b = DV.DefaultModifiers;
                             argDescription = reader.GetAttribute("d");
-                            if (!string.IsNullOrEmpty(argHideInHeader))
+                            if (!string.IsNullOrEmpty(argModifiers))
                             {
-                                argHideInHeader_b = bool.Parse(argHideInHeader);
+                                argModifiers_b = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), argModifiers, true);
                             }
-                            args.Add(new ArgumentInsightData(argName, argType, argHideInHeader_b, argDefaultValue, argDescription));
+                            args.Add(new ArgumentInsightData(argName, argType, argModifiers_b, argDefaultValue, argDescription));
                             reader.ReadElementString();
                         }
                         reader.ReadEndElement();
                         funcMod_e = ItemModifiers.None;
                         if (!string.IsNullOrEmpty(funcMod))
                         {
-                            funcMod_e = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), funcMod);
+                            funcMod_e = (ItemModifiers)Enum.Parse(typeof(ItemModifiers), funcMod, true);
                         }
                         func = new FunctionInsightData(funcName, funcReturn, funcSource, funcDescription, funcMod_e, funcReturnDescription, funcRemarks, funcAliases, args);
                         FunctionInsightList list;

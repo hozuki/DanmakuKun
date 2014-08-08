@@ -42,5 +42,14 @@ namespace DanmakuKun
             System.Diagnostics.Process.Start(ACFUN_URL);
         }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Point pt = e.GetPosition(btnClose);
+            if (!(pt.X >= 0 && pt.Y >= 0 && pt.X < btnClose.ActualWidth && pt.Y < btnClose.ActualHeight))
+            {
+                this.DragMove();
+            }
+        }
+
     }
 }

@@ -43,3 +43,4 @@ D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resou
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-classes.xml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\AboutWindow.baml
 D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\obj\Debug\AboutWindow.g.cs
+D:\Source Code Of Programs\VS .NET\Applets\DanmakuKun\DanmakuKun\bin\Debug\Resources\comp-objfields.xml

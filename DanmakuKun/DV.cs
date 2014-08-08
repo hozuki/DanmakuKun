@@ -16,6 +16,7 @@ namespace DanmakuKun
         public const string KeywordListName = "Keywords";
         public const string SnippetListName = "Snippets";
         public const string ClassListName = "Classes";
+        public const string ObjectFieldListName = "@ObjectFields";
 
     }
 
